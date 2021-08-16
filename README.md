@@ -1,24 +1,29 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Setting up application locally
 
-Things you may want to cover:
+- Ensure you have docker installed
+- Ensure you are using the correct ruby version (look into `.ruby_version` for reference)
 
-* Ruby version
+In project directory
 
-* System dependencies
+- `rvm use 3.0.1@rent-a-thing --create` sets the right gemset (if using `rvm`)
+- `docker-compose up` - runs PostgreSQL and Redis
+- `cp config/database.yml.example config/database.yml` - instantiates local database configuration
+- `cp .env.example .env` - instantiates local ENV variables
+- `bundle install` - installs all necessary gems (libraries)
+- `rails db:create db:schema:load` - creates DB and loads the most recent DB structure
+- `rails db:seed` - to seed database with initial data (admin account and some test data basically)
+- `yarn install` - install YARN
+- `rails s` - runs application server
 
-* Configuration
+- open [localhost:3000](http://localhost:3000/) and use following credentials to login
+    - email: `admin@example.com`
+    - pass: `password`
 
-* Database creation
+To run [sidekiq](https://github.com/mperham/sidekiq) (asynchronous processing) locally
 
-* Database initialization
+- `bundle exec sidekiq -C config/sidekiq.yml`
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+... however for most development purposes you will not need to run this. There are a couple of asynchronous tasks ran frequently that might affect our systems (see `config/schedule.yml`). 
+You can run those directly from rails console on demand.
