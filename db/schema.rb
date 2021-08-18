@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_18_132902) do
+ActiveRecord::Schema.define(version: 2021_08_18_133532) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,24 @@ ActiveRecord::Schema.define(version: 2021_08_18_132902) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "booked_items", force: :cascade do |t|
+    t.bigint "item_id", null: false
+    t.bigint "booking_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["booking_id"], name: "index_booked_items_on_booking_id"
+    t.index ["item_id"], name: "index_booked_items_on_item_id"
+  end
+
+  create_table "bookings", force: :cascade do |t|
+    t.date "starts_on"
+    t.date "ends_on"
+    t.bigint "customer_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_bookings_on_customer_id"
+  end
+
   create_table "customers", force: :cascade do |t|
     t.string "full_name"
     t.string "email"
@@ -57,4 +75,7 @@ ActiveRecord::Schema.define(version: 2021_08_18_132902) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "booked_items", "bookings"
+  add_foreign_key "booked_items", "items"
+  add_foreign_key "bookings", "customers"
 end

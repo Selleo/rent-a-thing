@@ -1,5 +1,5 @@
 ActiveAdmin.register Item do
-  menu priority: 2
+  menu label: 'Inventory', priority: 4
 
   # ==============
   # ==== LIST ====
