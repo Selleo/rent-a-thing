@@ -11,6 +11,11 @@
 @import "active_admin/mixins";
 @import "active_material";
 
+@import "base/variables";
+
+@import "layouts/comment";
+@import "layouts/layout";
+
 // Overriding any non-variable Sass must be done after the fact.
 // For example, to change the default status-tag color:
 //
