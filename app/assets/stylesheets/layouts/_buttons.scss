@@ -1,0 +1,20 @@
+.clear_filters_btn,
+#titlebar_right .action_item a,
+fieldset.actions .cancel a, .buttons .cancel a {
+  @include button-border;
+}
+
+#titlebar_right .action_item a[data-method="delete"] {
+  @include button-border;
+  @include button-border-danger;
+}
+
+.dropdown_menu_button.disabled:hover,
+.dropdown_menu_button.disabled:focus {
+  color: $primary;
+  text-decoration: none;
+}
+
+.disabled {
+  cursor: not-allowed;
+}

@@ -1,0 +1,26 @@
+@mixin button-border {
+  border: 2px solid $gray-100;
+  box-shadow: none;
+  color: $primary;
+  padding-bottom: 10px;
+  padding-top: 10px;
+
+  &:hover {
+    background-color: $primary-light;
+    border-color: transparent;
+    box-shadow: none;
+    color: $white;
+  }
+
+  &:link:hover {
+    text-decoration: none;
+  }
+}
+
+@mixin button-border-danger {
+  color: $danger;
+
+  &:hover {
+    background-color: $danger;
+  }
+}
