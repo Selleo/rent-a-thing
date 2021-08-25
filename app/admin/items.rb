@@ -14,8 +14,22 @@ ActiveAdmin.register Item do
   # ==============
   # ==== FORM ====
   # ==============
+   index do
+       selectable_column
+       id_column
+       column :name
+       column :description
+       column :archived
+       column :category
+       column :price_per_day
+      actions
+    end
 
+<<<<<<< HEAD
   permit_params :name, :description, :category_id, :archived #:price_per_day
+=======
+  permit_params :name, :description, :category_id, :archived, :price_per_day
+>>>>>>> added indexex
 
   form do |f|
     inputs do
@@ -23,7 +37,11 @@ ActiveAdmin.register Item do
       input :description
       input :category
       input :archived
+<<<<<<< HEAD
      # input :price_per_day
+=======
+      input :price_per_day
+>>>>>>> added indexex
     end
 
     actions

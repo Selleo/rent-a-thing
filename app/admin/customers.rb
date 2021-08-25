@@ -1,6 +1,15 @@
 ActiveAdmin.register Customer do
   menu priority: 3
 
+  index do
+    selectable_column
+    id_column
+    column :full_name
+    column :email
+    column :phone
+    actions
+  end
+
   # ==============
   # ==== LIST ====
   # ==============
