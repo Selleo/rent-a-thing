@@ -11,6 +11,16 @@ ActiveAdmin.register Item do
   filter :name
   filter :description
 
+  index do
+    selectable_column
+    id_column
+    column :name
+    column :description
+    column :category
+    column :price_per_day
+    actions
+  end
+
   # ==============
   # ==== FORM ====
   # ==============

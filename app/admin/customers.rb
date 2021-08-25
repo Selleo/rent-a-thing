@@ -7,6 +7,16 @@ ActiveAdmin.register Customer do
 
   filter :full_name
 
+  index do
+    selectable_column
+    id_column
+    column :full_name
+    column :email
+    column :phone
+    column :priority
+    actions
+  end
+
   # ==============
   # ==== EDIT ====
   # ==============
