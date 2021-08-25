@@ -5,4 +5,6 @@ class Item < ApplicationRecord
 
   scope :active, -> { where(archived: false) }
   scope :archived, -> { where(archived: true) }
+  validates :name, presence: true
+  validates :description, presence: true
 end
