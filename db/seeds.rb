@@ -18,6 +18,8 @@ if Rails.env.development?
   # ==== ITEMS ====
   # ===============
 
+  category = Category.where(name: 'Rowery').first_or_create
+
   Item.count.zero? && [
     [
       'REVOLT E+',
@@ -50,7 +52,7 @@ if Rails.env.development?
       'https://www.giant-bicycles.com/pl/bikes-trance-x-advanced-pro-29'
     ],
   ].each do |name, description, _website|
-    Item.create(name: name, description: description, archived: false)
+    Item.create(name: name, description: description, archived: false, category: category)
   end
 
   # ==================

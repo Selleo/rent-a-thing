@@ -12,8 +12,19 @@ ActiveAdmin.register Item do
   filter :description
 
   # ==============
-  # ==== EDIT ====
+  # ==== FORM ====
   # ==============
 
-  permit_params :name, :description, :archived
+  permit_params :name, :description, :category_id, :archived
+
+  form do |f|
+    inputs do
+      input :name
+      input :description
+      input :category
+      input :archived
+    end
+
+    actions
+  end
 end
