@@ -10,6 +10,35 @@
   color: $gray-200;
 }
 
+.booked_items {
+  .inputs {
+    margin-bottom: 0;
+
+    & + .inputs ol {
+      border-top: 1px solid $gray-100;
+    }
+
+    ol {
+      align-items: flex-end;
+      display: inline-flex;
+      flex-wrap: wrap;
+      margin-left: $m;
+
+      .input {
+        padding-left: 0;
+      }
+
+      .button {
+        margin-bottom: $m;
+      }
+    }
+  }
+
+  .has_many_add {
+    margin-left: $m;
+  }
+}
+
 .two-column {
   display: inline;
   max-width: 100%;

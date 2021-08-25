@@ -10,6 +10,10 @@ fieldset.actions .cancel a {
   }
 }
 
+.button.has_many_remove {
+  @include am-btn-danger;
+}
+
 .dropdown_menu_button.disabled:hover,
 .dropdown_menu_button.disabled:focus {
   color: $primary;
