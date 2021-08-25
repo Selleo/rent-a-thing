@@ -27,7 +27,7 @@ ActiveAdmin.register AdminUser do
           row :email
 
         end
-        
+
   end
 
   form do |f|

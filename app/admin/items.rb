@@ -22,6 +22,26 @@ ActiveAdmin.register Item do
   end
 
   # ==============
+  # ==== SHOW ====
+  # ==============
+
+
+  show do
+    attributes_table do
+      row :name
+      row :description
+      row :archived
+      row :category
+      row :price_per_day
+      row :bookings do |item|
+        item.bookings.count
+      end
+
+    end
+
+  end
+
+  # ==============
   # ==== FORM ====
   # ==============
 
@@ -38,4 +58,6 @@ ActiveAdmin.register Item do
 
     actions
   end
+
+
 end
