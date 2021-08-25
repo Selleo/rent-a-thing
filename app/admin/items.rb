@@ -15,7 +15,7 @@ ActiveAdmin.register Item do
   # ==== FORM ====
   # ==============
 
-  permit_params :name, :description, :category_id, :archived
+  permit_params :name, :description, :category_id, :archived, :price_per_day
 
   form do |f|
     inputs do
@@ -23,8 +23,19 @@ ActiveAdmin.register Item do
       input :description
       input :category
       input :archived
+      input :price_per_day
     end
 
     actions
+  end
+
+  index do
+    id_column
+    column :name
+    column :description
+    column :category
+    column :archived
+    column :created_at
+    column :price_per_day
   end
 end

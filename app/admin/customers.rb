@@ -12,4 +12,12 @@ ActiveAdmin.register Customer do
   # ==============
 
   permit_params :full_name, :email, :phone
+  index do
+    id_column
+    column  :full_name
+    column  :email
+    column  :phone
+    column  :created_at
+
+  end
 end

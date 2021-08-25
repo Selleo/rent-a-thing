@@ -24,35 +24,41 @@ if Rails.env.development?
     [
       'REVOLT E+',
       'Od dziurawego asfaltu, po szutrowe, gruntowe i mieszane wyprawy w terenie – ten wszechstronny rower elektryczny z barankiem daje ci moc, by jechać dalej i szybciej na każdej trasie, jaką sobie wymarzysz.',
-      'https://www.giant-bicycles.com/pl/revolt-eplus-2022'
+      'https://www.giant-bicycles.com/pl/revolt-eplus-2022',
+      1.57
     ],
     [
       'TCR Advanced',
       'Szosowe rowery, które wygrywają, charakteryzują się odpowiednią równowagą lekkości, sztywności i dobrych właściwości jezdnych na drodze. Nowy TCR Advanced spełnia wszystkie te wymogi i wraz z uaktualnionym profilem rur aero jest odpowiednim wyborem dla lubiących rywalizację kolarzy.',
-      'https://www.giant-bicycles.com/pl/bikes-tcr-advanced'
+      'https://www.giant-bicycles.com/pl/bikes-tcr-advanced',
+      4.78
     ],
     [
       'Anytour E+',
       'Pokonywanie długich dystansów jest zawsze lepsze na rowerze. Zobacz zabytki, poznaj otoczenie i oddychaj świeżym powietrzem na łonie natury dzięki temu wszechstronnemu rowerowi elektrycznemu. Nowy AnyTour E + ułatwia pokonywanie płaskich lub wyboistych dróg.',
-      'https://www.giant-bicycles.com/pl/bikes-anytour-eplus'
+      'https://www.giant-bicycles.com/pl/bikes-anytour-eplus',
+      1.45
     ],
     [
       'FATHOM E+ JUNIOR',
       'Wszystko, czego potrzebuje młody rowerzysta, to wspinać się wyżej, jeździć dłużej i mieć więcej zabawy na szlaku. Ten całkowicie nowy E-bike wywoła uśmiech na twarzy każdego dziecka i sprawi, że rodzinne przygody będą przyjemniejsze niż kiedykolwiek.',
-      'https://www.giant-bicycles.com/pl/fathom-eplus-junior'
+      'https://www.giant-bicycles.com/pl/fathom-eplus-junior',
+      0.99
     ],
     [
       'STP 24 FS',
       'Zaprojektowany z myślą o młodych rowerzystach chcących poszukać przygód na szlaku lub w parku rowerowym. Ten całkowicie nowy, wszechstronny model został zbudowany na lekkiej, super wytrzymałej ramie aluminiowej i wyposażony w szybkie koła 24-calowe.',
-      'https://www.giant-bicycles.com/pl/stp-24-fs'
+      'https://www.giant-bicycles.com/pl/stp-24-fs',
+      5.67
     ],
     [
       'TRANCE X ADVANCED PRO 29',
       'Więcej skoku, więcej frajdy. Od trudnych tras enduro po misje wśród bezdroży na stromych i wyboistych singlach, nowy kompozytowy 29er stworzono na bazie platformy Trance 29 z podrasowanym zawieszeniem i regulowaną geometrią ramy.',
-      'https://www.giant-bicycles.com/pl/bikes-trance-x-advanced-pro-29'
+      'https://www.giant-bicycles.com/pl/bikes-trance-x-advanced-pro-29',
+      0.01
     ],
-  ].each do |name, description, _website|
-    Item.create(name: name, description: description, archived: false, category: category)
+  ].each do |name, description, _website, price|
+    Item.create(name: name, description: description, archived: false, category: category, price_per_day: price)
   end
 
   # ==================

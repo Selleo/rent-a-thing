@@ -5,4 +5,7 @@ class Item < ApplicationRecord
 
   scope :active, -> { where(archived: false) }
   scope :archived, -> { where(archived: true) }
+
+  validates :name, presence: true
+  validates :price_per_day, numericality: { greater_than_or_equal_to: 0.0 }
 end
