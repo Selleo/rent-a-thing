@@ -18,6 +18,17 @@ ActiveAdmin.register AdminUser do
   filter :sign_in_count
   filter :created_at
 
+  show do
+    panel "Admin User Details" do
+      attributes_table_for admin_user do
+        row :email
+        row :reset_password_token
+        row :reset_password_sent_at
+        row :remember_created_at
+      end
+    end
+  end
+
   form do |f|
     f.inputs do
       f.input :email

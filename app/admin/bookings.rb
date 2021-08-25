@@ -14,6 +14,25 @@ ActiveAdmin.register Booking do
 
   permit_params :customer_id, :starts_on, :ends_on, booked_items_attributes: %i[id item_id _destroy]
 
+  index do
+    selectable_column
+    column :id
+    column :starts_on
+    column :ends_on
+    column :customer
+    actions
+  end
+
+  show do
+    panel "Booking Details" do
+      attributes_table_for booking do
+        row :starts_on
+        row :ends_on
+        row :customer
+      end
+    end
+  end
+
   form do |f|
     inputs do
       input :customer
