@@ -52,7 +52,7 @@ if Rails.env.development?
       'https://www.giant-bicycles.com/pl/bikes-trance-x-advanced-pro-29'
     ],
   ].each do |name, description, _website|
-    Item.create(name: name, description: description, archived: false, category: category)
+    Item.create(name: name, description: description, archived: false, category: category, price_per_day: [123, 323423, 1234, 3214].sample)
   end
 
   # ==================
