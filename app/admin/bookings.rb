@@ -13,6 +13,11 @@ ActiveAdmin.register Booking do
   # ==============
 
   permit_params :customer_id, :starts_on, :ends_on, booked_items_attributes: %i[id item_id _destroy]
+    index do
+        column :starts_on
+        column :ends_on
+        column :customer
+    end
 
   form do |f|
     inputs do

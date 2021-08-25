@@ -10,6 +10,13 @@ ActiveAdmin.register Customer do
   # ==============
   # ==== EDIT ====
   # ==============
-
+  show do
+    attributes_table do
+      row :full_name
+      row :email
+      row :phone
+      row :bookings
+        end
+    end
   permit_params :full_name, :email, :phone
 end
