@@ -18,6 +18,18 @@ ActiveAdmin.register AdminUser do
   filter :sign_in_count
   filter :created_at
 
+  # ==============
+  # ==== SHOW ====
+  # ==============
+
+  show do
+        attributes_table do
+          row :email
+
+        end
+        
+  end
+
   form do |f|
     f.inputs do
       f.input :email

@@ -26,8 +26,6 @@ ActiveAdmin.register Category do
           row :name
           row :description
         end
-
-        active_admin_comments
       end
 
       column do
