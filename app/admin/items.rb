@@ -10,6 +10,7 @@ ActiveAdmin.register Item do
 
   filter :name
   filter :description
+  
 
   # ==============
   # ==== FORM ====
