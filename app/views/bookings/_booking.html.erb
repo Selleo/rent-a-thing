@@ -1,4 +1,4 @@
-<% if booking.archived_at == nil %>
+<% if booking.archived_at.nil? && booking.ends_on > Time.current %>
 <tr>
   <td><%= booking.customer.full_name %></td>
   <td><%= booking.starts_on %></td>

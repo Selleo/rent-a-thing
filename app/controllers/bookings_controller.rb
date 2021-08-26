@@ -5,7 +5,10 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.find(params[:id])
-
+    if !@booking.archived_at.nil? || @booking.ends_on < Time.current
+      flash[:alert] = "Not found"
+      redirect_to bookings_path
+    end
   end
 
   def destroy
