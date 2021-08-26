@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 2021_08_26_101119) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "category_id"
-    t.decimal "price_per_day", precision: 10, scale: 2
+    t.decimal "price_per_day", default: "0.0", null: false
     t.index ["category_id"], name: "index_items_on_category_id"
   end
 
