@@ -1,0 +1,21 @@
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Customer</th>
+    <th>Starts</th>
+    <th>Ends</th>
+    <th>Action</th>
+  </tr>
+  <tr>
+    <td><%= @booking.id%></td>
+    <td><%= @booking.customer.full_name %></td>
+    <td><%= @booking.starts_on %></td>
+    <td><%= @booking.ends_on %></td>
+
+  </tr>
+
+</table>
+<%= link_to "Back to list", bookings_path%>
+
+
+
