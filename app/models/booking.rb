@@ -1,3 +1,4 @@
+require 'securerandom'
 class Booking < ApplicationRecord
   belongs_to :customer
   has_many :booked_items, dependent: :destroy
@@ -9,4 +10,9 @@ class Booking < ApplicationRecord
   # validates :items, presence: true
   # validates_presence_of :items
   validates_associated :booked_items
+
+  before_create do
+    self.uuid=SecureRandom.uuid
+  end
+
 end
