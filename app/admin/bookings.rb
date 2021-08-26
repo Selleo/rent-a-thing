@@ -1,9 +1,18 @@
 ActiveAdmin.register Booking do
   menu priority: 2
 
-  # ==============
-  # ==== LIST ====
-  # ==============
+  index do
+    id_column
+    column :customer
+    column :starts_on do |booking|
+      I18n.l(booking.starts_on, format: :long)
+    end
+    column :ends_on do |booking|
+      I18n.l(booking.ends_on, format: :long)
+    end
+    actions
+  end
+
 
   filter :customer
   filter :created_at

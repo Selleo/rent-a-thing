@@ -1,6 +1,13 @@
 ActiveAdmin.register Category do
   menu priority: 5
 
+  index do
+    id_column
+    column :name
+    column :description
+    actions
+  end
+
   # ==============
   # ==== FORM ====
   # ==============
