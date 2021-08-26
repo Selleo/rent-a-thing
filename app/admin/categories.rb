@@ -11,6 +11,16 @@ ActiveAdmin.register Category do
   # ==== SHOW ====
   # ==============
 
+  index do
+    selectable_column
+    id_column
+    column :name
+    column :description
+    column :created_at
+    actions
+  end
+
+
   show do
     columns do
       column do

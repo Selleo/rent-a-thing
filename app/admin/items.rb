@@ -15,6 +15,18 @@ ActiveAdmin.register Item do
   # ==== FORM ====
   # ==============
 
+  index do
+    selectable_column
+    id_column
+    column :name
+    column :description
+    column :archived
+    column :category
+    column :price_per_day
+    actions
+  end
+
+
   permit_params :name, :description, :category_id, :archived, :price_per_day
 
   form do |f|

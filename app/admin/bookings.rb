@@ -8,6 +8,17 @@ ActiveAdmin.register Booking do
   filter :customer
   filter :created_at
 
+  index do
+    selectable_column
+    id_column
+    column :starts_on
+    column :ends_on
+    column :customer
+    column :created_at
+    actions
+  end
+
+
   # ==============
   # ==== EDIT ====
   # ==============
