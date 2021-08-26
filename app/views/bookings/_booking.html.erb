@@ -4,5 +4,7 @@
   <td><%= booking.ends_on %></td>
   <td><%= booking.archived_at %></td>
   <td><%= link_to "Show", booking_path(booking) %></td>
-  <td><%= link_to "Archive", booking_path(booking), method: :delete %></td>
+  <% if booking.archived_at.nil? %>
+    <td><%= link_to "Archive", booking_path(booking), method: :delete %></td>
+  <% end %>
 </tr>
