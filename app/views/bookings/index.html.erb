@@ -1,0 +1,22 @@
+
+<table>
+
+    <tr>
+   <th>Booking</th>
+    <th>Starts on</th>
+    <th>Ends on</th>
+    </tr>
+ 
+    <% @bookings.each do |booking| %>
+      <tr>
+        <td><%= booking.customer.full_name %></td>  
+        <td><%= booking.starts_on%></td>
+        <td><%= booking.ends_on%></td>
+        <td><%=link_to "Show", booking_path(booking)%></td>  
+      </tr>
+    <% end %>
+
+</table>
+
+
+
