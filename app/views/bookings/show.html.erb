@@ -1,7 +1,7 @@
-<h1>Showing booking id: <%= @booking.id %><h1>
+  <h1>Showing booking id: <%= @booking.id %><h1>
+  <h3>Customer: <%= @booking.customer.full_name %></h3>
+  <h3>Starts On: <%= @booking.starts_on %></h3>
+  <h3>Ends On: <%= @booking.ends_on %></h3>
 
-<h3>Customer: <%= @booking.customer.full_name %></h3>
-<h3>Starts On: <%= @booking.starts_on %></h3>
-<h3>Ends On: <%= @booking.ends_on %></h3>
-
-<%= link_to "Back to Photos", bookings_path %>
+  <%= link_to "Back to Photos", bookings_path %><br>
+  <%= link_to "Archive", booking_path(@booking), method: :delete %>
