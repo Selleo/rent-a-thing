@@ -68,4 +68,12 @@ ActiveAdmin.register Item do
 
     actions
   end
+
+  controller do
+    def create
+      create! do
+        redirect_to collection_url and return if resource.valid?
+      end
+    end
+  end
 end
