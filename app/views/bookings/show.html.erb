@@ -11,5 +11,10 @@
   <p>
     <span>Ends on: </span> <%= @booking.ends_on %>
   </p>
+  <p>
+    <span>Archived at: </span> <%= @booking.archived_at %>
+  </p>
   <%= link_to "Go Back", bookings_path  %>
+  <%= link_to "Archive", booking_path(@booking), method: :delete%>
+  
 </div>
