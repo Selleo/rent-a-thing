@@ -5,9 +5,11 @@ class BookingsController < ApplicationController
   def show
     @booking = Booking.find(params[:id])
   end
-=begin
+
   def destroy
-    @booking_delete = Booking.find(params[:id]).destroy
+    booking = Booking.find(params[:id])
+    booking.update_attribute(:archived_at, Time.current)
+    redirect_to bookings_path
+    flash.alert="updated"
   end
-=end
 end
