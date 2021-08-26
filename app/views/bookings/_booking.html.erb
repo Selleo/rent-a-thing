@@ -1,6 +1,9 @@
+<% if booking.archived_at == nil %>
 <tr>
   <td><%= booking.customer.full_name %></td>
   <td><%= booking.starts_on %></td>
   <td><%= booking.ends_on %></td>
   <td><%= link_to "Show", booking %></td>
+  <td><%= link_to "Archive", booking, method: :delete %></td>
 </tr>
+<% end %>
