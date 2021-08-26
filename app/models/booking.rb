@@ -1,4 +1,6 @@
 class Booking < ApplicationRecord
+  scope :with_not_archived, -> { where(archived_at: nil)}
+  scope :with_end_on_before_current, -> { where("ends_on < ?", Time.current)}
   belongs_to :customer
   has_many :booked_items, dependent: :destroy
   has_many :items, through: :booked_items
