@@ -9,7 +9,8 @@ class BookingsController < ApplicationController
   def destroy
     booking = Booking.find(params[:id])
     booking.update_attribute(:archived_at, Time.current)
+    flash[:notice]= "archived"
     redirect_to bookings_path
-    flash.alert="updated"
+
   end
 end
