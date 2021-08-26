@@ -25,16 +25,30 @@ ActiveAdmin.register Item do
   end
 
   show do
-    attributes_table do
-      row :name
-      row :description
-      row :archived
-      row :price_per_day
-      row :category
-      row("Number of bookings") { |item| item.bookings.count }
-    end
+    columns do
+      column do
+        attributes_table do
+          row :name
+          row :description
+          row :archived
+          row :price_per_day
+          row :category
+          row("Number of bookings") { |item| item.bookings.count }
+        end
 
-    active_admin_comments
+        active_admin_comments
+      end
+
+      column do
+        panel "History of bookings" do
+          table_for item.bookings do
+            column :customer
+            column :starts_on
+            column :ends_on
+          end
+        end
+      end
+    end
   end
 
   # ==============
