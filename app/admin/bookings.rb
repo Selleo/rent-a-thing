@@ -1,3 +1,4 @@
+require 'securerandom'
 ActiveAdmin.register Booking do
   menu priority: 2
 
@@ -61,4 +62,8 @@ ActiveAdmin.register Booking do
 
     actions
   end
+  before_create do |booking|
+  booking.uuid = SecureRandom.uuid
+  end
+
 end

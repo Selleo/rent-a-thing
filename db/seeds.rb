@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+require 'securerandom'
+
 if Rails.env.development?
   # ===============
   # ==== USERS ====
@@ -73,7 +75,7 @@ if Rails.env.development?
           starts_on = (-10..20).to_a.sample.days.from_now
           ends_on = starts_on + rand(10).days
 
-          booking = customer.bookings.create(starts_on: starts_on, ends_on: ends_on)
+          booking = customer.bookings.create(starts_on: starts_on, ends_on: ends_on, uuid:SecureRandom.uuid)
           booking.items << Item.order('RANDOM()').limit(rand(3))
           booking.save!
         end
