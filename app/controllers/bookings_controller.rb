@@ -4,7 +4,10 @@ class BookingsController < ApplicationController
   end
 
   def show
-    @booking = Booking.find(params[:id])
+    @booking = Booking.find(params[:id]) || @booking.ends_on < Time.current
+    if @booking.archived_at != nil
+      render :status => 404, :file => "#{Rails.root}/public/404.html", :layout => false
+    end
   end
 
   def destroy
