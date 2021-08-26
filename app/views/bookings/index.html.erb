@@ -5,7 +5,12 @@
     <th>Customer</th>
     <th>Starts</th>
     <th>Ends</th>
+    <th>Archived at</th>
   </tr>
 
   <%= render partial: 'booking', collection: @bookings %>
+
+  <%# @bookings.each do |booking| %>
+    <%#= render partial: "booking", booking: booking %>
+  <%# end %>
 </table>
