@@ -17,6 +17,22 @@ ActiveAdmin.register Item do
 
   permit_params :name, :description, :category_id, :price, :archived
 
+
+    controller do
+      def create
+        create! do |format|
+          #{ admin_items_url }
+          format.html { redirect_to admin_items_path  }
+        end
+      end 
+      def update
+        update! { admin_items_url } 
+      end 
+    end 
+
+
+
+
   index do
     selectable_column
     column :id
@@ -51,7 +67,6 @@ ActiveAdmin.register Item do
       input :archived
       input :price
     end
-
     actions
   end
 end
