@@ -5,5 +5,7 @@ class Booking < ApplicationRecord
 
   validates :customer_id, :starts_on, :ends_on, presence: true
 
+  scope :not_archived, -> { where(archived_at: nil, ends_on: DateTime.current..DateTime::Infinity.new) }
+
   accepts_nested_attributes_for :booked_items, allow_destroy: true
 end

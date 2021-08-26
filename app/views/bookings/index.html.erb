@@ -13,5 +13,5 @@
     <th>Ends</th>
   </tr>
 
-  <%= render partial: 'booking', collection: @bookings %>
+  <%= render partial: 'booking', collection: @bookings.not_archived %>
 </table>
