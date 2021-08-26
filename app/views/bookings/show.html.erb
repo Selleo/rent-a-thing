@@ -1,0 +1,15 @@
+<h2>Booking details</h2>
+
+<div>
+  <p>
+    <span>Id: </span> <%= @booking.id %>
+  </p>
+  <p>
+    <span>Customer name: </span> <%= @booking.customer.full_name %>
+  </p>
+    <span>Starts on: </span> <%= @booking.starts_on %>
+  <p>
+    <span>Ends on: </span> <%= @booking.ends_on %>
+  </p>
+  <%= link_to "Go Back", bookings_path  %>
+</div>
