@@ -74,7 +74,7 @@ if Rails.env.development?
           starts_on = (-10..20).to_a.sample.days.from_now
           ends_on = starts_on + rand(10).days
 
-          booking = customer.bookings.create(starts_on: starts_on, ends_on: ends_on)
+          booking = customer.bookings.create(starts_on: starts_on, ends_on: ends_on, archived_at: nil)
           booking.items << Item.order('RANDOM()').limit(rand(3))
           booking.save!
         end

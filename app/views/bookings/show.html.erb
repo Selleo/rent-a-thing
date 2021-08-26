@@ -4,4 +4,5 @@
 <div>Starts on: <%= @booking.starts_on %></div>
 <div>Ends on: <%= @booking.ends_on %></div>
 
-<%= link_to "Back to bookings", bookings_path %>
+<%= link_to "Back to bookings", bookings_path %></br>
+<%= link_to "Archive this booking", @booking, method: :delete %>

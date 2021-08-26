@@ -1,5 +1,11 @@
 <h2>All bookings</h2>
 
+<% flash.each do |type, msg| %>
+  <div style="color: red;">
+    <%= msg %>
+  </div>
+<% end %>
+
 <table>
   <tr>
     <th>Customer</th>
