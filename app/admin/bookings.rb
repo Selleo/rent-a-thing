@@ -20,6 +20,38 @@ ActiveAdmin.register Booking do
     actions
   end
 
+  show do
+    columns do
+      column do
+        attributes_table do
+          row :customer
+          row :starts_on
+          row :ends_on
+          row("Total price") { |booking|
+            days = [1, (booking.ends_on - booking.starts_on).to_i].max
+            price = 0
+            booking.booked_items.each { |booked_item|
+              price += booked_item.item.price_per_day * days
+            }
+            price
+          }
+        end
+
+        active_admin_comments
+      end
+
+      column do
+        panel "Items rented" do
+          table_for booking.booked_items do
+            column :item
+            column("Description") { |booked_item| booked_item.item.description }
+            column("Price per day") { |booked_item| booked_item.item.price_per_day }
+          end
+        end
+      end
+    end
+  end
+
   # ==============
   # ==== EDIT ====
   # ==============
