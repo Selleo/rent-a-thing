@@ -1,0 +1,7 @@
+<h2>Booking #<%= @booking.id %></h2>
+
+<div>Customer: <%= @booking.customer.full_name %></div>
+<div>Starts on: <%= @booking.starts_on %></div>
+<div>Ends on: <%= @booking.ends_on %></div>
+
+<%= link_to "Back to bookings", bookings_path %>
