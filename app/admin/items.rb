@@ -69,4 +69,13 @@ ActiveAdmin.register Item do
       end
     end
   end
+
+  # Redirect to to item#index after creating an item
+  controller do
+    def create
+      super do |format|
+        redirect_to collection_url and return if resource.valid?
+      end
+    end
+  end
 end
