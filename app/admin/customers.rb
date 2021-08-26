@@ -35,8 +35,7 @@ ActiveAdmin.register Customer do
         panel 'Bookings' do
           table_for resource.bookings do
             column :id do |booking|
-              @id = booking.id
-              render partial: 'id_link', locals: {id: booking.id}
+              link_to booking.id, admin_booking_url(booking.id)
             end
             column :starts_on
             column :ends_on

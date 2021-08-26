@@ -42,6 +42,20 @@ ActiveAdmin.register Item do
   end
 
   # ==============
+  # ==== CREATE ====
+  # ==============
+
+  controller do
+    def create
+      create! do |format|
+
+        format.html { redirect_to admin_items_url }
+      end
+    end
+  end
+
+
+  # ==============
   # ==== FORM ====
   # ==============
 
