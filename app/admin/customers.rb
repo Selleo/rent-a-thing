@@ -21,5 +21,32 @@ ActiveAdmin.register Customer do
     column :phone
     actions
   end
+
+  show do
+    columns do
+      column do
+        attributes_table do
+          row :id
+          row :full_name
+          row :email
+          row :phone
+          row :created_at
+          row :updated_at
+        end
+
+        active_admin_comments
+      end
+
+      column do
+        panel 'Bookings' do
+          table_for resource.bookings do
+            column :starts_on
+            column :ends_on
+            column :items
+          end
+        end
+      end
+    end
+  end
   
 end

@@ -40,4 +40,33 @@ ActiveAdmin.register Item do
 
     actions
   end
+
+  show do
+    columns do
+      column do
+        attributes_table do
+          row :id
+          row :name
+          row :description
+          row :archived
+          row :created_at
+          row :updated_at
+          row :category
+          row :price_per_day
+        end
+
+        active_admin_comments
+      end
+
+      column do
+        panel 'Bookings of this item' do
+          table_for resource.bookings do
+            column :starts_on
+            column :ends_on
+            column :customer
+          end
+        end
+      end
+    end
+  end
 end

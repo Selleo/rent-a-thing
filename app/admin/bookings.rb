@@ -18,6 +18,29 @@ ActiveAdmin.register Booking do
     actions
   end
 
+  show do
+    columns do
+      column do
+        attributes_table do
+          row :starts_on
+          row :ends_on
+          row :customer
+        end
+
+        active_admin_comments
+      end
+
+      column do
+        panel 'Items' do
+          table_for resource.items do
+            column :name
+            column :description
+          end
+        end
+      end
+    end
+  end
+
 
   # ==============
   # ==== EDIT ====
