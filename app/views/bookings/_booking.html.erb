@@ -5,4 +5,7 @@
   <td><%= booking.ends_on %></td>
   <td><%=booking.archived_at %>></td>
   <td><%= link_to 'goto', booking_path(booking) %></td>
+  <td><%= link_to 'goto', booking, method: :destory, confirm: "na pewno?" %></td>
+  <td><%= link_to 'delete', booking, method: :delete, confirm: "na pewno?" %></td>
+  
 </tr>

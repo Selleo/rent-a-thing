@@ -6,6 +6,12 @@ class BookingsController < ApplicationController
       @booking=Booking.find(params[:id])
   end
   def destroy
-    @booking=Booking.find(params[:archived_at]).update(Time.now)
+    @booking=Booking.find(params[:id]).update(archived_at: Time.current)
+    redirect_to bookings_url, notice: 'siema'
   end
+  def destroy
+    @booking=Booking.find(params[:id]).delete()
+    redirect_to bookings_url, notice: 'dfsdf'
+  end
+
 end

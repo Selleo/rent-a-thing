@@ -1,5 +1,10 @@
 <h2>All bookings</h2>
 
+<%flash.each do |type,msg|%>
+<div>
+<%=msg%>
+</div>
+<%end%>
 <table>
   <tr>
     <th>id</th>
