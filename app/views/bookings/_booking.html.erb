@@ -2,4 +2,6 @@
   <td><%= booking.customer.full_name %></td>
   <td><%= booking.starts_on %></td>
   <td><%= booking.ends_on %></td>
+  <td><%= link_to 'show', booking_path(booking)%></td>
+  <td><%= link_to 'archive', booking_path(booking), method: :delete%></td>
 </tr>

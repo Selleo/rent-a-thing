@@ -1,0 +1,6 @@
+<li><%= @booking.customer.full_name %></li>
+<li><%= @booking.starts_on %></li>
+<li><%= @booking.ends_on %></li>
+<li><%= link_to 'back to bookings listing', bookings_path%></li>
+<li><%= link_to 'archive this booking', booking_path(@booking), method: :delete %></li>
+
