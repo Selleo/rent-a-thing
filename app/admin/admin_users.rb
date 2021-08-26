@@ -1,6 +1,6 @@
 ActiveAdmin.register AdminUser do
   menu label: 'Users', parent: 'Administration'
-
+  config.comments = false
   permit_params :email, :password, :password_confirmation
 
   index do
