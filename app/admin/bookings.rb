@@ -17,7 +17,7 @@ ActiveAdmin.register Booking do
   index do
     selectable_column
     column :id
-    column :starts_on
+    column :starts_on   # i tutaj  zmienic format daty ???
     column :ends_on
     column :customer
     column :booked_items
