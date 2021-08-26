@@ -25,7 +25,7 @@ ActiveAdmin.register Item do
       actions
     end
     
-  permit_params :name, :description, :category_id, :archived
+  permit_params :name, :description, :category_id, :archived, :price_per_day
 
 <<<<<<< HEAD
 <<<<<<< HEAD

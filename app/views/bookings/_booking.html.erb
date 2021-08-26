@@ -1,5 +1,8 @@
 <tr>
+  <td><%= booking.id %></td>
   <td><%= booking.customer.full_name %></td>
   <td><%= booking.starts_on %></td>
   <td><%= booking.ends_on %></td>
+  <td><%=booking.archived_at %>></td>
+  <td><%= link_to 'goto', booking_path(booking) %></td>
 </tr>
