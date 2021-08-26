@@ -4,7 +4,9 @@ class Booking < ApplicationRecord
   has_many :booked_items, dependent: :destroy
   has_many :items, through: :booked_items
 
-
+  before_create do
+    self.uuid = SecureRandom.uuid
+  end
 
   scope :available, -> { where(archived_at: nil).where("ends_on > :date", date: Time.current) } 
 
