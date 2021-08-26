@@ -2,10 +2,18 @@
 
 <table>
   <tr>
+    <th>ID</th>
     <th>Customer</th>
     <th>Starts</th>
     <th>Ends</th>
+    <th>Archived</th>
   </tr>
 
   <%= render partial: 'booking', collection: @bookings %>
 </table>
+
+<% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+<% end %>

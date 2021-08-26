@@ -1,5 +1,9 @@
 <tr>
+  <td><%= booking.id %></td>
   <td><%= booking.customer.full_name %></td>
   <td><%= booking.starts_on %></td>
   <td><%= booking.ends_on %></td>
+  <td><%= booking.archived_at %></td>
+  <td><%= link_to 'show', booking_path(booking.id) %></td>
+  <td><%= link_to 'archive', booking_path(booking.id), method: :delete %></td>
 </tr>
