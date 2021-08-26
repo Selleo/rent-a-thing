@@ -3,7 +3,7 @@
   <td><%= booking.starts_on %></td>
   <td><%= booking.ends_on %></td>
   <td>
-  <%= link_to "Check booking", booking_path(booking) %>
-  <%= link_to "Archive booking", booking_path(booking), method: :delete%>
+  <%= link_to "Check booking", booking_path(booking.uuid) %>
+  <%= link_to "Archive booking", booking_path(booking.uuid), method: :delete%>
   </td>
 </tr>
