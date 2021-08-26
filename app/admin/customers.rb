@@ -10,6 +10,14 @@ ActiveAdmin.register Customer do
   # ==============
   # ==== EDIT ====
   # ==============
+
+  index do
+      column :full_name
+      column :email
+      column :phone
+      column :bookings
+  end
+
   show do
     attributes_table do
       row :full_name

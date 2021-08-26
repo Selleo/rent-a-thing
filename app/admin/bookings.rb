@@ -17,7 +17,10 @@ ActiveAdmin.register Booking do
         column :starts_on
         column :ends_on
         column :customer
+        
     end
+
+
 
   form do |f|
     inputs do

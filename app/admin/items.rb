@@ -45,5 +45,3 @@ ActiveAdmin.register Item do
     actions
   end
 end
-
-      #item.bookings.count
