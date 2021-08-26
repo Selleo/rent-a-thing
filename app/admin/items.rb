@@ -15,14 +15,16 @@ ActiveAdmin.register Item do
   # ==== FORM ====
   # ==============
 
-  permit_params :name, :description, :category_id, :price, :archived
+  permit_params :name, :description, :category_id, :price, :archived, :image
 
 
     controller do
       def create
         create! do |format|
           #{ admin_items_url }
-          format.html { redirect_to admin_items_path  }
+          flash[:notice] = "New item #{ :name }"
+          format.html { redirect_to admin_items_path } 
+    
         end
       end 
       def update
@@ -35,6 +37,15 @@ ActiveAdmin.register Item do
 
   index do
     selectable_column
+    #if image.present?
+    # image_column :image, style: :thumb
+    # end
+
+    column "Image" do |item|
+     # item.image.image_url
+      #image_tag (item.image,width:100,height:80) 
+    end
+
     column :id
     column :name
     column :description
@@ -46,6 +57,13 @@ ActiveAdmin.register Item do
   
   show do
     panel "Item Details" do
+
+      if item.image.present?
+        div do
+          image_tag item.image
+        end
+      end
+
       attributes_table_for item do
         row :name
         row :description
@@ -59,6 +77,10 @@ ActiveAdmin.register Item do
     end
   end
 
+  
+
+
+   
   form do |f|
     inputs do
       input :name
@@ -67,6 +89,11 @@ ActiveAdmin.register Item do
       input :archived
       input :price
     end
+      
+    f.inputs do 
+      f.input :image, as: :file
+    end  
+      
     actions
   end
 end
