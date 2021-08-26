@@ -24,12 +24,17 @@ ActiveAdmin.register Item do
        column :price_per_day
       actions
     end
+    
+  permit_params :name, :description, :category_id, :archived
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   permit_params :name, :description, :category_id, :archived #:price_per_day
 =======
   permit_params :name, :description, :category_id, :archived, :price_per_day
 >>>>>>> added indexex
+=======
+>>>>>>> removed test
 
   form do |f|
     inputs do
@@ -37,11 +42,11 @@ ActiveAdmin.register Item do
       input :description
       input :category
       input :archived
-<<<<<<< HEAD
-     # input :price_per_day
-=======
       input :price_per_day
+<<<<<<< HEAD
 >>>>>>> added indexex
+=======
+>>>>>>> removed test
     end
 
     actions

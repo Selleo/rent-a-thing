@@ -12,9 +12,12 @@
 
 <<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2021_08_25_163151) do
+<<<<<<< HEAD
 =======
 ActiveRecord::Schema.define(version: 2021_08_25_165404) do
 >>>>>>> added indexex
+=======
+>>>>>>> removed test
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
