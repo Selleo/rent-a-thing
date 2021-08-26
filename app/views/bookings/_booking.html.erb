@@ -1,4 +1,3 @@
-<% if booking.archived_at.nil? && booking.ends_on > Time.current %>
 <tr>
   <td><%= booking.customer.full_name %></td>
   <td><%= booking.starts_on %></td>
@@ -6,4 +5,3 @@
   <td><%= link_to "Show", booking %></td>
   <td><%= link_to "Archive", booking, method: :delete %></td>
 </tr>
-<% end %>
