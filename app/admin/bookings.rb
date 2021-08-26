@@ -1,6 +1,15 @@
 ActiveAdmin.register Booking do
   menu priority: 2
 
+  index do
+    selectable_column
+    id_column
+    column :customer
+    column :starts_on
+    column :ends_on
+    actions
+  end
+
   # ==============
   # ==== LIST ====
   # ==============

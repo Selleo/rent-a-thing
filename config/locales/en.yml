@@ -31,3 +31,6 @@
 
 en:
   hello: "Hello world"
+  date:
+    formats:
+      own: "%d/%m/%Y"
