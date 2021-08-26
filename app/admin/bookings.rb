@@ -8,6 +8,18 @@ ActiveAdmin.register Booking do
   filter :customer
   filter :created_at
 
+  index do
+    selectable_column
+    id_column
+
+    column :customer
+    column :starts_on
+    column :ends_on
+    column("Items") { |booking| booking.booked_items.map { |booked_item| booked_item.item.name } }
+
+    actions
+  end
+
   # ==============
   # ==== EDIT ====
   # ==============

@@ -6,6 +6,20 @@ ActiveAdmin.register Customer do
   # ==============
 
   filter :full_name
+  filter :email
+  filter :phone
+
+  index do
+    selectable_column
+    id_column
+
+    column :full_name
+    column :email
+    column :phone
+    column("Bookings", &:bookings)
+
+    actions
+  end
 
   # ==============
   # ==== EDIT ====
