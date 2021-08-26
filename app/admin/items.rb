@@ -37,14 +37,16 @@ ActiveAdmin.register Item do
 
   index do
     selectable_column
+   
     #if image.present?
     # image_column :image, style: :thumb
     # end
 
-    column "Image" do |item|
-     # item.image.image_url
-      #image_tag (item.image,width:100,height:80) 
-    end
+     #column "Image" do |item|
+
+      #image_tag item.image
+     #image_tag (item.image,width:100,height:80) 
+    # end
 
     column :id
     column :name
