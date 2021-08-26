@@ -24,6 +24,19 @@ ActiveAdmin.register Item do
     actions
   end
 
+  show do
+    attributes_table do
+      row :name
+      row :description
+      row :archived
+      row :price_per_day
+      row :category
+      row("Number of bookings") { |item| item.bookings.count }
+    end
+
+    active_admin_comments
+  end
+
   # ==============
   # ==== FORM ====
   # ==============
