@@ -5,8 +5,42 @@ ActiveAdmin.register Booking do
   # ==== LIST ====
   # ==============
 
+  index do
+    selectable_column
+    column :id
+    column :starts_on
+    column :ends_on
+    column :customer
+
+    actions
+  end
+
   filter :customer
   filter :created_at
+
+  # ==============
+  # ==== show ====
+  # ==============
+
+
+  show do
+      columns do
+        column do
+          attributes_table do
+            row :starts_on
+            row :ends_on
+            row :customer
+          end
+        end
+      end
+  end
+
+
+
+
+
+
+
 
   # ==============
   # ==== EDIT ====

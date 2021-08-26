@@ -11,6 +11,17 @@ ActiveAdmin.register Category do
   # ==== SHOW ====
   # ==============
 
+  index do
+    selectable_column
+    column :id
+    column :name
+    column :description
+    column :created_at
+    actions
+
+  end
+
+
   show do
     columns do
       column do
@@ -19,7 +30,7 @@ ActiveAdmin.register Category do
           row :description
         end
 
-        active_admin_comments
+
       end
 
       column do
@@ -32,4 +43,5 @@ ActiveAdmin.register Category do
       end
     end
   end
+  config.comments = false
 end
