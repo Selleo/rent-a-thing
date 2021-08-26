@@ -1,5 +1,5 @@
 # README
-
+#jakś zmiana
 ## Setting up application locally
 
 - Ensure you have docker installed
