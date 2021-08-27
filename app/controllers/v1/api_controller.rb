@@ -1,4 +1,5 @@
-class ApiController < ApplicationController
+
+class V1::ApiController < ApplicationController
     def index
         @months = []
         #@items = Booking.all
