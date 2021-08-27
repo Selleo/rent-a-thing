@@ -1,32 +1,35 @@
 class V1::Statistics::BookedDaysByMonthController < ApplicationController
   def index
-    answer_hash = Booking.all
-      .group_by{ |b| b.starts_on.strftime("%Y-%m") }
-      .transform_values do |bookings| 
-        bookings.sum{ |booking| (booking.ends_on - booking.starts_on).to_i }
-      end    
-
-    year = params.fetch("year", Date.current.year.to_s)
-    current_month_int = Date.today.month
-    if year.to_i < Date.today.year
-      current_month_int = 12
-    elsif year.to_i > Date.today.year
-      return render json: { error: "Invalid Year Parameter" }, status: 400
+    # grab and parse ?year param from URI
+    # check if year is valid and it isn't the same as current year (as to not set months to 12 for current year)
+    if params[:year].present? && params[:year].to_i != Date.current.year
+      # throw errors if input is invalid
+      return throw_parameter_missing_error if !/(19|20)\d{2}/.match(params[:year])
+      return throw_no_future_dates_error if params[:year].to_i > Date.current.year
+      # otherwise set the filtering to that year as a whole
+      date_to_filter_by = Date.new(params[:year].to_i, 12)
+    elsif
+      # we're dealing with current year so doing that is fine as it will contain the month data
+      date_to_filter_by = Date.current
     end
-    answer_array = []
-
-    current_month_int.times do | month_int |
-      month_id = "#{year}-#{(month_int+1).to_s.rjust(2, "0")}"
-      temp_hash = { "month": month_id }
-      if !answer_hash[month_id].nil?
-        temp_hash["value"] = answer_hash[month_id]
-      else
-        temp_hash["value"] = 0
-      end
-      answer_array.push(temp_hash)
+    # group all bookings by month in hash { [month_index]: Booking[] }
+    bookings_at_specified_year = Booking.where(starts_on: date_to_filter_by.all_year).all.group_by{ |b| b.starts_on.month }
+    # month is going from 1 to current month (April - 4) or from 1 - 12 if older year was specified
+    output = (1..date_to_filter_by.month).map do | month |
+      bookings = bookings_at_specified_year[month]
+      days_diff = bookings ? bookings.sum { |b| (b.ends_on - b.starts_on).to_i } : 0
+      { "month": Date.new(date_to_filter_by.year, month).strftime("%Y-%m"), "value": days_diff }
     end
-
-    render json: answer_array
+    render json: output
   end
 
+
+  private  
+  def throw_parameter_missing_error
+    return render json: { error: "Invalid Year Parameter" }, status: 400
+  end
+
+  def throw_no_future_dates_error
+    return render json: { error: "No Future Dates" }, status: 400
+  end
 end
