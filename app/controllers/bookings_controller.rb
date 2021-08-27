@@ -1,14 +1,12 @@
 class BookingsController < ApplicationController
+  rescue_from ActiveRecord::RecordNotFound, with: :show_404
+
   def index
     @bookings = Booking.all
   end
 
   def show
-    # if Bookings(archived_at) !== nil
-    # render '404'
-    # else
-      @booking = Booking.find(params[:id])
-    # end
+    @booking = Booking.active.find(params[:id])
   end
 
   def destroy
@@ -17,6 +15,8 @@ class BookingsController < ApplicationController
     redirect_to bookings_path, notice: "Booking has been archived successfully"
   end
 
-
+  def show_404
+    render file: Rails.public_path.join('404.html'), status: :not_found, layout: false
+  end
 
 end

@@ -20,6 +20,16 @@ ActiveAdmin.register Customer do
         customer.bookings.count
       end
     end
+
+    panel "Customer Bookings" do
+      table_for customer.bookings.active do
+        column :starts_on
+        column :ends_on
+        column :booking_items do |booking|
+          booking.items.pluck(:name)
+        end
+      end
+    end
   end
 
   # ==============
