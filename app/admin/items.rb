@@ -40,6 +40,7 @@ ActiveAdmin.register Item do
       input :category
       input :archived
       input :price
+
     end
 
     actions

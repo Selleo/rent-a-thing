@@ -1,0 +1,2 @@
+class AddArchived < ApplicationRecord
+end

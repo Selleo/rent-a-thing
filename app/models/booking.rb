@@ -9,7 +9,13 @@ class Booking < ApplicationRecord
   validates :customer, presence:true
 
 
+  def is_archived?
+      if booking.archived_at != 0
+      end
+  end
 
-
+  scope :active, -> { where(archived_at: nil).where("ends_on > :ends_on", ends_on: Time.current) }
   accepts_nested_attributes_for :booked_items, allow_destroy: true
+
+
 end
