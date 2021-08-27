@@ -1,12 +1,11 @@
 
-<table>
 
-    <tr>
-   <th>Back to Booking</th>
-    </tr>
- 
- <%= link_to "Index", bookings_path  %>
-</table>
+<h2>Booking details</h2>
 
+<div><b>Customer: </b><%= @booking.customer.full_name %></div>
+<div><b>Starts on: </b><%= @booking.starts_on %></div>
+<div><b>Ends on: </b><%= @booking.ends_on %></div>
 
-
+<p>
+  <%= link_to 'back to booking listing', bookings_path %>
+</p>

@@ -5,6 +5,8 @@
    <th>Booking</th>
     <th>Starts on</th>
     <th>Ends on</th>
+      <th>Archived at</th>
+     <th>Actions</th>
     </tr>
  
     <% @bookings.each do |booking| %>
@@ -12,11 +14,12 @@
         <td><%= booking.customer.full_name %></td>  
         <td><%= booking.starts_on%></td>
         <td><%= booking.ends_on%></td>
-        <td><%=link_to "Show", booking_path(booking)%></td>  
-      </tr>
+       <td>%# = booking.archived_at&.strftime('%Y-%m-%d %H:%M') #%></td> 
+        <td><%= link_to "Show", booking_path(booking)%></td>  
+        <td><%= link_to "Destroy", booking_path(booking), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+       </tr>
     <% end %>
 
 </table>
-
 
 
