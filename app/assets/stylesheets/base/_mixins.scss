@@ -1,14 +1,19 @@
 @mixin am-btn {
-  border: 2px solid $gray-100;
+  background-color: transparent;
+  border: 2px solid $gray-200;
   color: $primary;
-  padding-bottom: $m-sm;
-  padding-top: $m-sm;
+  font-weight: $am-font-weight-semi-bold;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  text-transform: none;
 
-  &:hover {
-    background-color: $primary-light;
-    border-color: transparent;
+  &:hover,
+  &:focus,
+  &:active {
+    background: transparent;
+    border-color: $primary;
     box-shadow: none;
-    color: $white;
+    color: $primary;
   }
 
   &:link:hover {
@@ -17,15 +22,52 @@
 }
 
 @mixin am-btn-raised {
+  background: $primary;
   border-color: transparent;
   color: $white;
+  font-weight: $am-font-weight-semi-bold;
+  text-transform: none;
+
+  &:focus,
+  &:hover,
+  &:active {
+    background: $primary-light;
+    border-color: transparent;
+    color: $white;
+  }
 }
 
 @mixin am-btn-danger {
   color: $danger;
 
   &:hover {
-    background-color: $danger;
-    color: $white;
+    border-color: $danger;
+    color: $danger;
   }
+}
+
+@mixin am-paper {
+  border-radius: $radius-lg;
+  box-shadow: none;
+}
+
+@mixin am-select-input {
+  border-radius: $m-sm;
+}
+
+@mixin am-textfield-input {
+  border-radius: $m-sm;
+}
+
+@mixin am-multiselect {
+  border-radius: $m-sm;
+}
+
+@mixin am-textfield-input-inline {
+  width: 100%;
+}
+
+
+@mixin am-subheader {
+  @include am-font-size(16);
 }

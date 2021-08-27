@@ -10,11 +10,16 @@
 // Active Admin's got SASS!
 @import "base/variables";
 
-@import "active_admin/mixins";
 @import "active_material";
+@import "active_admin/mixins";
 
 @import "base/mixins";
+
 @import "active_material/components/buttons";
+@import "active_material/components/filter";
+@import "active_material/components/forms";
+@import "active_material/components/panels";
+@import "active_material/components/select";
 
 @import "layouts/buttons";
 @import "layouts/comment";

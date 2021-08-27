@@ -7,7 +7,7 @@
 }
 
 .pagination_information {
-  color: $gray-200;
+  color: $gray-300;
 }
 
 .booked_items {
@@ -46,6 +46,7 @@
   width: 50%;
 }
 
+//-----COLUMNS----------------------------------------------------------------------------------------------------------
 .columns + .columns {
   margin-top: $m;
 }
@@ -60,6 +61,44 @@
     flex: 1 0 320px;
     margin-left: $m !important;
     margin-right: $m !important;
+  }
+}
+
+//-----HEADER-----------------------------------------------------------------------------------------------------------
+.header {
+  position: sticky !important;
+  top: 0;
+  z-index: 2;
+}
+
+//-----TITLE BAR--------------------------------------------------------------------------------------------------------
+.title_bar {
+  background-color: transparent;
+  box-shadow: none;
+  padding: $m-md;
+}
+
+#titlebar_right .action_item a {
+  @include am-btn-raised;
+
+  &[data-method="delete"] {
+    @include am-btn;
+    @include am-btn-danger;
+  }
+}
+
+//-----PANEL------------------------------------------------------------------------------------------------------------
+.panel,
+.formtastic {
+  //& > h3 {
+  //
+  //}
+
+  fieldset.actions,
+  .buttons {
+    border-bottom-left-radius: $radius-lg !important;
+    border-bottom-right-radius: $radius-lg !important;
+    box-shadow: none;
   }
 }
 

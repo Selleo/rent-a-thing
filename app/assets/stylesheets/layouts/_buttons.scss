@@ -3,9 +3,10 @@ fieldset.actions .cancel a {
 }
 
 #titlebar_right .action_item a {
-  @include am-btn;
+  @include am-btn-raised;
 
   &[data-method="delete"] {
+    @include am-btn;
     @include am-btn-danger;
   }
 }
