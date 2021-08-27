@@ -34,8 +34,14 @@ ActiveAdmin.register Item do
           row :archived
           row :category
           row :price_per_day
+
           end
-        end
+      end
+      column do
+
+        @booked_item=item.booked_items.count
+
+      end
     end
 
   end
