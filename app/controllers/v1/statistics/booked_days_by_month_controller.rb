@@ -1,18 +1,4 @@
 class V1::Statistics::BookedDaysByMonthController < ApplicationController
-  # def index
-  #   @months = []
-  #   currentmonth = Date.today.month.to_int
-  #   # @miesionce = Date::MONTHNAMES
-    
-  #   currentmonth.times do |month| 
-  #       @months << @miesionce[month+1]
-  #   end
-
-  #  render json: @months
-  # end
-
-  # def show
-  # end
   def index
     answer_hash = Booking.all
       .group_by{ |b| b.starts_on.strftime("%Y-%m") }
@@ -24,6 +10,8 @@ class V1::Statistics::BookedDaysByMonthController < ApplicationController
     current_month_int = Date.today.month
     if year.to_i < Date.today.year
       current_month_int = 12
+    elsif year.to_i > Date.today.year
+      return render json: { error: "Invalid Year Parameter" }, status: 400
     end
     answer_array = []
 
