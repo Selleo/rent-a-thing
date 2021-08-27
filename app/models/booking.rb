@@ -11,6 +11,10 @@ class Booking < ApplicationRecord
   # validates_presence_of :items
   validates_associated :booked_items
 
+  scope :for_month, -> (date_string) { where("created_at > :beginning_of_the_month and created_at < :end_of_the_month",
+    beginning_of_the_month: Date.parse(date_string + "-01").beginning_of_month,
+    end_of_the_month: Date.parse(date_string + "-01").end_of_month) }
+
   before_create do
     self.uuid=SecureRandom.uuid
   end
