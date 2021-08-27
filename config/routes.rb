@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   resources :bookings, only: [:index, :show, :destroy]
 
   namespace :v1 do
-    get 'available_items' => 'available_items#index'
-    get 'booked_days_by_month' => 'booked_days_by_month#show', as: :booked_days_by_month
+    get "statistics/booked_days_by_month" => "bookings_api#index"
   end
 end
