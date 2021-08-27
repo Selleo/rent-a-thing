@@ -18,7 +18,7 @@ if Rails.env.development?
   # ==== ITEMS ====
   # ===============
 
-  category = Category.where(name: 'Rowery').first_or_create
+  # category = Category.where(name: 'Rowery').first_or_create
 
   Item.count.zero? && [
     [
@@ -51,8 +51,8 @@ if Rails.env.development?
       'Więcej skoku, więcej frajdy. Od trudnych tras enduro po misje wśród bezdroży na stromych i wyboistych singlach, nowy kompozytowy 29er stworzono na bazie platformy Trance 29 z podrasowanym zawieszeniem i regulowaną geometrią ramy.',
       'https://www.giant-bicycles.com/pl/bikes-trance-x-advanced-pro-29'
     ],
-  ].each do |name, description, _website|
-    Item.create(name: name, description: description, archived: false, category: category)
+  ].each do |name, description, _website, category|
+    Item.create(name: name, description: description, archived: false, category: category , price: 1)
   end
 
   # ==================
