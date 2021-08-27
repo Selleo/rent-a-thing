@@ -18,8 +18,8 @@ if Rails.env.development?
   # ==== ITEMS ====
   # ===============
 
-  # category = Category.where(name: 'Rowery').first_or_create
-
+   category = Category.where(name: 'Rowery').first_or_create
+  
   Item.count.zero? && [
     [
       'REVOLT E+',
@@ -51,8 +51,9 @@ if Rails.env.development?
       'Więcej skoku, więcej frajdy. Od trudnych tras enduro po misje wśród bezdroży na stromych i wyboistych singlach, nowy kompozytowy 29er stworzono na bazie platformy Trance 29 z podrasowanym zawieszeniem i regulowaną geometrią ramy.',
       'https://www.giant-bicycles.com/pl/bikes-trance-x-advanced-pro-29'
     ],
-  ].each do |name, description, _website, category|
-    Item.create(name: name, description: description, archived: false, category: category , price: 1)
+  ].each do |name, description, _website|
+   # binding.pry
+    Item.create!(name: name, description: description, archived: false, category: category , price: 1)
   end
 
   # ==================
@@ -73,7 +74,7 @@ if Rails.env.development?
           starts_on = (-10..20).to_a.sample.days.from_now
           ends_on = starts_on + rand(10).days
 
-          booking = customer.bookings.create(starts_on: starts_on, ends_on: ends_on, uuid: SecureRandom.uuid)
+          booking = customer.bookings.create(starts_on: starts_on, ends_on: ends_on)
           booking.items << Item.order('RANDOM()').limit(rand(3))
           booking.save!
         end
