@@ -1,13 +1,14 @@
-<%= link_to 'back', bookings_path %>
-<%= link_to 'archive', booking_path(@booking.id), method: :delete %>
-
+<div class="container">
+<div class="col-4 user-table">
 <p>Starts on: <%= @booking.starts_on %></p>
 <p>Ends on: <%= @booking.ends_on %></p>
 <p>Archived at: <%= @booking.archived_at %></p>
 <p>Customer: <%= @booking.customer.full_name %></p>
 <p>Customer's email: <%= @booking.customer.email %></p>
 <p>Customer's phone number: <%= @booking.customer.phone %></p>
-<table>
+</div>
+<div class="col-8 booked-list">
+<table class="table">
     <tr>
         <td>ID</td>
         <td>Name</td>
@@ -21,3 +22,13 @@
         </tr>
     <% end %>
 </table>
+</div>
+<div class="btn"><%= link_to 'back', bookings_path %></div>
+<div class="btn"><%= link_to 'archive', booking_path(@booking.id), method: :delete %></div>
+</div>
+
+
+
+
+
+

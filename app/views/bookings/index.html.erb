@@ -1,19 +1,24 @@
+<div class="container">
 <h2>All bookings</h2>
-
-<table>
+<div class="booked-list">
+<table class="table">
+<thead>
   <tr>
-    <th>ID</th>
+    <th style="width 20px" >ID</th>
     <th>Customer</th>
     <th>Starts</th>
     <th>Ends</th>
     <th>Archived</th>
+    <th></th>
+    <th></th>
   </tr>
-
+<thead>
   <%= render partial: 'booking', collection: @bookings %>
 </table>
-
+</div>
+</div>
 <% flash.each do |type, msg| %>
-  <div>
+  <div class="message">
     <%= msg %>
   </div>
 <% end %>

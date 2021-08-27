@@ -2,20 +2,57 @@
 @import "base/mixins" ;
 @import "layouts/*" ;
 
+*{
+  padding: 0px;
+  margin: 0px;
+}
+
 a {
-  color: #00c9b6;
+  color: #0ca747;
   text-decoration: none;
   text-transform: uppercase;
+}
+table {
+  border:solid whitesmoke 2px;
 }
 
 th {
   font-size: larger;
   text-transform: uppercase;
+  background: white;
+  position: sticky;
+  top: 0; 
+  box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+  border-radius: 1px;
 }
 
 td, th {
   text-align: center;
-  padding: 4px 8px;
-  border-bottom: #00c9b6 solid 1px;
+  border-bottom: #333;
 }
 
+.booked-list{
+  height:350px;
+  width:800px;
+  overflow:scroll;
+  box-shadow: 5px 5px 3px -1px rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+}
+.btn
+{
+  margin-top: 10px;
+  border: solid #0ca747 1px;
+  border-radius: 5px;
+  float: right;
+}
+
+.container{
+padding-top:  25px;
+}
+
+.message{
+  font-size: 2rem;
+  color: red;
+  margin-top: 20px;
+  text-align: center;
+}
