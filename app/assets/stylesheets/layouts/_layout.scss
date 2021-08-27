@@ -1,4 +1,4 @@
-.input .datepicker + .datepicker {
+.input .datepicker+.datepicker {
   margin-left: $m-sm !important;
 }
 
@@ -14,7 +14,7 @@
   .inputs {
     margin-bottom: 0;
 
-    & + .inputs ol {
+    &+.inputs ol {
       border-top: 1px solid $gray-100;
     }
 
@@ -46,7 +46,7 @@
   width: 50%;
 }
 
-.columns + .columns {
+.columns+.columns {
   margin-top: $m;
 }
 
