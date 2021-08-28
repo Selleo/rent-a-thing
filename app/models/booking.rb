@@ -1,4 +1,3 @@
-require 'securerandom'
 class Booking < ApplicationRecord
   belongs_to :customer
   has_many :booked_items, dependent: :destroy
@@ -7,16 +6,16 @@ class Booking < ApplicationRecord
   accepts_nested_attributes_for :booked_items, allow_destroy: true
 
   validates :starts_on, :ends_on, presence: true
-  # validates :items, presence: true
-  # validates_presence_of :items
   validates_associated :booked_items
 
-  scope :for_month, -> (date_string) { where("created_at > :beginning_of_the_month and created_at < :end_of_the_month",
-    beginning_of_the_month: Date.parse(date_string + "-01").beginning_of_month,
-    end_of_the_month: Date.parse(date_string + "-01").end_of_month) }
+  scope :created_in_month, -> (given_month) {
+    where("created_at > :beginning_of_month and created_at < :end_of_month",
+    beginning_of_month: Date.parse(given_month + "-01").beginning_of_month,
+    end_of_month: Date.parse(given_month + "-01").end_of_month)
+  }
 
   before_create do
-    self.uuid=SecureRandom.uuid
+    self.uuid = SecureRandom.uuid
   end
 
 end
