@@ -1,18 +1,13 @@
 Rails.application.routes.draw do
-
   namespace :v1 do
-    resources :available_items  #get 'available_items'
-    resources :api
+    get 'available_items' => 'available_items#index'
     namespace :statistics do
-      resources :booked_days_by_month
+      get 'booked_days_by_month' => 'booking_api#booked_days_by_month'
     end
   end
-  
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :bookings, only: [:index, :show, :destroy]
-
- 
-  
+  resources :bookings, only: %i[index show destroy]
 end
