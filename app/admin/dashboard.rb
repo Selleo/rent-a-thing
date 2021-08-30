@@ -21,7 +21,7 @@ ActiveAdmin.register_page "Dashboard" do
             ]
           )
         end
-        
+
         panel "Statistics" do
           react_component(
             'ChartPanel',
@@ -30,6 +30,19 @@ ActiveAdmin.register_page "Dashboard" do
               {
                 type: 'pie',
                 dataUrl: v1_bookings_by_item_url
+              },
+            ]
+          )
+        end
+
+        panel "Statistics" do
+          react_component(
+            'ChartPanel',
+            title: 'New users per month',
+            series: [
+              {
+                type: 'bar',
+                dataUrl: v1_new_users_per_month_url
               },
             ]
           )
