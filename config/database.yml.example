@@ -16,15 +16,15 @@ default: &default
 
 development:
   <<: *default
-  database: budget_buckets_development
+  database: rent_a_thing_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: budget_buckets_test
+  database: rent_a_thing_test
 
 production:
   <<: *default
-  database: budget_buckets_production
+  database: rent_a_thing_production
