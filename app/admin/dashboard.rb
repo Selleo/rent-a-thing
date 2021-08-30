@@ -39,6 +39,23 @@ ActiveAdmin.register_page "Dashboard" do
           )
         end
       end
+      column do
+        panel "New customers by month" do
+          react_component(
+            'ChartPanel',
+            title: 'New customers by month',
+            chartConfig: {
+              yAxis: { title: { text: 'Months' } },
+            },
+            series: [
+              {
+                type: 'bar',
+                dataUrl: v1_new_customers_by_month_url
+              },
+            ]
+          )
+        end
+      end
     end
   end
 end
