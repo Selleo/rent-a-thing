@@ -39,6 +39,23 @@ ActiveAdmin.register_page "Dashboard" do
           )
         end
       end
+      column do
+        panel "New uswers" do
+          react_component(
+            'ChartPanel',
+            title: 'New Users',
+            chartConfig: {
+              yAxis: { title: { text: 'Days' } },
+            },
+            series: [
+              {
+                type: 'bar',
+                dataUrl: v1_new_users_url
+              },
+            ]
+          )
+        end
+      end
     end
   end
 end
