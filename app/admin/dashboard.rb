@@ -56,6 +56,24 @@ ActiveAdmin.register_page "Dashboard" do
           )
         end
       end
+      column do
+        panel "Earnings" do
+          react_component(
+            'ChartPanel',
+            title: 'Earnings',
+            chartConfig: {
+              yAxis: { title: { text: 'PLN' } },
+              xAxis: { title: { text: 'Months' } },
+            },
+            series: [
+              {
+                type: 'area',
+                dataUrl: v1_earnings_url
+              },
+            ]
+          )
+        end
+      end
     end
   end
 end
