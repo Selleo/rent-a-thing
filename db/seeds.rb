@@ -63,19 +63,19 @@ if Rails.env.development?
   if Customer.count.zero?
     25.times do
       first_name, last_name = FFaker::NamePL.full_name.split
-
+      customer_created_at = Date.current - rand(300).days#Date.new(2021) + rand(Date.current.month * 31)
       Customer.create(
         full_name: "#{first_name} #{last_name}",
         email: "#{first_name}#{rand(100)}@#{FFaker::Internet.domain_name}",
         phone: FFaker::PhoneNumber.short_phone_number,
-        created_at: Date.new(2021) + rand(Date.current.month * 31)
+        created_at: customer_created_at
       ).tap do |customer|
 
         (0..5).to_a.sample.times do
-          starts_on = (-10..20).to_a.sample.days.from_now
+          starts_on = customer_created_at + rand(30).days
           ends_on = starts_on + rand(10).days
 
-          booking = customer.bookings.create(starts_on: starts_on, ends_on: ends_on, archived_at: nil)
+          booking = customer.bookings.create(created_at: starts_on - rand(5).days, starts_on: starts_on, ends_on: ends_on, archived_at: nil)
           booking.items << Item.order('RANDOM()').limit(rand(3))
           booking.save!
         end
