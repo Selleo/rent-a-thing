@@ -36,7 +36,7 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
-# Use database.yml.example as template
+# Use database.yml as template
 /config/database.yml
 
 /public/packs
