@@ -1,22 +1,24 @@
 module V1
   class BookingsByItemController < ActionController::API
-    def show
-      result = Item.all.map do |item|
-        {
-          category: item.name,
-          value: item.bookings.count
-        }
+    def index
+      bookings = Booking.all
+      booked_items = bookings.flat_map do |booking|
+        booking.items
       end
 
-      result = result.reject do |row|
-        row[:value].zero?
+      items = booked_items.uniq.map do |item|
+        {
+           category: item.name,
+           value: booked_items.select { |booked_item| booked_item.id == item.id }.count
+         }
       end
+
 
       render json: {
         data: {
           attributes: {
             name: 'Bookings by item',
-            value: result
+            value: items
           }
         }
       }
