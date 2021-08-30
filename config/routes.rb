@@ -8,6 +8,9 @@ Rails.application.routes.draw do
 
   namespace :v1 do
     get 'available_items' => 'available_items#index'
+    namespace :statistics do
+      get 'booked_days_by_month' => 'booked_days_by_month#show'
+    end
   end
 
 end
