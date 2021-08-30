@@ -52,6 +52,10 @@ ActiveAdmin.register_page "Dashboard" do
                 type: 'bar',
                 dataUrl: v1_new_customers_by_month_url
               },
+              {
+                type: 'line',
+                dataUrl: v1_all_customers_by_month_url
+              }
             ]
           )
         end
