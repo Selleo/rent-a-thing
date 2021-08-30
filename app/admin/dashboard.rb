@@ -51,6 +51,19 @@ ActiveAdmin.register_page "Dashboard" do
             ]
           )
         end
+
+        panel "Statistics" do
+          react_component(
+            'ChartPanel',
+            title: 'Income per month',
+            series: [
+              {
+                type: 'bar',
+                dataUrl: v1_income_per_month_url
+              },
+            ]
+          )
+        end
       end
     end
   end
