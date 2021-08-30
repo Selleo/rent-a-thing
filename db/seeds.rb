@@ -61,13 +61,14 @@ if Rails.env.development?
   # ==================
 
   if Customer.count.zero?
-    5.times do
+    25.times do
       first_name, last_name = FFaker::NamePL.full_name.split
 
       Customer.create(
         full_name: "#{first_name} #{last_name}",
         email: "#{first_name}#{rand(100)}@#{FFaker::Internet.domain_name}",
-        phone: FFaker::PhoneNumber.short_phone_number
+        phone: FFaker::PhoneNumber.short_phone_number,
+        created_at: Date.new(2021) + rand(Date.current.month * 31)
       ).tap do |customer|
 
         (0..5).to_a.sample.times do

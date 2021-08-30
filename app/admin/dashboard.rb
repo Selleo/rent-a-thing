@@ -47,6 +47,19 @@ ActiveAdmin.register_page "Dashboard" do
             ]
           )
         end
+
+        panel "Statistics" do
+          react_component(
+            'ChartPanel',
+            title: 'Users per month',
+            series: [
+              {
+                type: 'line',
+                dataUrl: v1_users_per_month_url
+              },
+            ]
+          )
+        end
       end
     end
   end

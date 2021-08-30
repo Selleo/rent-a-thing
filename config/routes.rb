@@ -10,5 +10,6 @@ Rails.application.routes.draw do
     get 'booked_days_by_month' => 'booked_days_by_month#show', as: :booked_days_by_month
     get 'bookings_by_item' => 'bookings_by_item#show', as: :bookings_by_item
     get 'new_users_per_month' => 'new_users_per_month#show', as: :new_users_per_month
+    get 'users_per_month' => 'users_per_month#show', as: :users_per_month
   end
 end
