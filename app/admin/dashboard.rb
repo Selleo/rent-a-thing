@@ -21,6 +21,19 @@ ActiveAdmin.register_page "Dashboard" do
             ]
           )
         end
+        
+        panel "Statistics" do
+          react_component(
+            'ChartPanel',
+            title: 'Bookings by item',
+            series: [
+              {
+                type: 'pie',
+                dataUrl: v1_bookings_by_item_url
+              },
+            ]
+          )
+        end
       end
     end
   end
