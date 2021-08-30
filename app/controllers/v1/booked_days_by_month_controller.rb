@@ -12,12 +12,19 @@ module V1
 
       result = (1..Date.current.month).map do |month|
         {
-          'month' => Date.new(Date.current.year, month).strftime("%Y-%m"),
+          'category' => Date.new(Date.current.year, month).strftime("%Y-%m"),
           'value' => bookings_length_by_month[month] || 0
         }
       end
 
-      render json: result
+      render json: {
+        data: {
+          attributes: {
+            name: 'Booked days by month',
+            value: result
+          }
+        }
+      }
     end
   end
 end
