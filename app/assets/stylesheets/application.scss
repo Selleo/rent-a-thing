@@ -1,4 +1,20 @@
 @import "base/variables";
-@import "base/mixins";
+@import "base/mixins" ;
+@import "layouts/*" ;
 
-@import "layouts/*"
+a {
+  color: #00c9b6;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+th {
+  font-size: larger;
+  text-transform: uppercase;
+}
+
+td, th {
+  text-align: center;
+  padding: 4px 8px;
+  border-bottom: #00c9b6 solid 1px;
+}

@@ -1,3 +1,5 @@
+Dir[Rails.root.join('lib/active_admin_ext/**/*.rb')].sort.each { |f| require f }
+
 ActiveAdmin.setup do |config|
   # == Site Title
   #
