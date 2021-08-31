@@ -1,22 +1,21 @@
-class V1::NewUsersPerMonthController < ActionController::API
-  def show
-    all_customers = Customer.all
+module V1
+  class NewUsersPerMonthController < ActionController::API
+    include Helpers
 
-    first_user_created = Customer.first.created_at
-    result = (first_user_created.year..Date.current.year).map do |year|
-      (1..[Date.current.month, 12].min).map { |month|
-        date = Date.new(year, month)
-        { category: date.strftime("%Y-%m"), value: all_customers.where(created_at: date.all_month).count }
-      }
-    end.flatten
+    def show
+      result = generate_months(Customer.first_created.created_at).map do |month|
+        customers_count = Customer.in_month(month).count
+        { category: month.strftime('%Y-%m'), value: customers_count }
+      end
 
-    render json: {
-      data: {
-        attributes: {
-          name: 'New users',
-          value: result
+      render json: {
+        data: {
+          attributes: {
+            name: 'New Users',
+            value: result
+          }
         }
       }
-    }
+    end
   end
 end
