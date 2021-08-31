@@ -1,0 +1,6 @@
+<p>Cześć <%= @booking.customer.full_name %>,</p>
+<p>Twoja rezerwacja została anulowana, poniżej znajdują się szczegóły: </p>
+
+<p><%= "(#{@booking.starts_on} - #{@booking.ends_on})" %></p>
+
+<p>Booking ID: <%= @booking.id %></p>

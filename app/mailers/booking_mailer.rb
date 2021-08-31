@@ -11,4 +11,9 @@ class BookingMailer < ApplicationMailer
     @admin_user = params[:admin_user]
     mail(to: @admin_user.email, subject: 'Nowa rezerwacja')
   end
+
+  def inform_about_cancelation
+    @booking = params[:booking]
+    mail(to: @booking.customer.email, subject: 'Cofnięcie rezerwacji')
+  end
 end

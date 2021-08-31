@@ -17,6 +17,13 @@ ActiveAdmin.register Booking do
         end
       end
     end
+
+    def destroy
+      destroy! do |_format|
+        BookingMailer.with(booking: @booking).inform_about_cancelation.deliver_now
+      end
+    end
+
   end
 
 
