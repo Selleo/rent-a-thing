@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  resources :bookings, only: :index
+  resources :bookings, only: [:index, :show, :destroy]
 
   namespace :v1 do
     get 'available_items' => 'available_items#index'

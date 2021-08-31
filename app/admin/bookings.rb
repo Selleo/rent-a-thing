@@ -41,6 +41,9 @@ ActiveAdmin.register Booking do
         row :starts_on
         row :ends_on
         row :customer
+        row "Archive" do
+          link_to "Archive This Booking", booking_path(booking), method: :delete
+        end
       end
     end
   end
