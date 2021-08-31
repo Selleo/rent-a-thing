@@ -23,6 +23,7 @@ ActiveAdmin.register AdminUser do
       f.input :email
       f.input :password
       f.input :password_confirmation
+      f.input :is_getting_notifications
     end
     f.actions
   end
