@@ -48,33 +48,36 @@ ActiveAdmin.register Booking do
             column("Price per day") { |booked_item| booked_item.item.price_per_day }
           end
         end
-
-  # ==============
-  # ==== EDIT ====
-  # ==============
-
-  permit_params :customer_id, :starts_on, :ends_on, booked_items_attributes: %i[id item_id _destroy]
-
-  controller do
-    def create
-      create! do |_format|
-        BookingMailer.with(booking: @booking).notify_admin.deliver_now
-        BookingMailer.with(booking: @booking).customer_confirmation.deliver_now
       end
     end
-  end
 
-  form do |f|
-    inputs do
-      input :customer
-      input :starts_on
-      input :ends_on
+    # ==============
+    # ==== EDIT ====
+    # ==============
+
+    permit_params :customer_id, :starts_on, :ends_on, booked_items_attributes: %i[id item_id _destroy]
+
+    controller do
+      def create
+        create! do |_format|
+          BookingMailer.with(booking: @booking).notify_admin.deliver_now
+          BookingMailer.with(booking: @booking).customer_confirmation.deliver_now
+        end
+      end
     end
 
-    has_many(:booked_items, new_record: 'Add item', heading: 'Booked items', allow_destroy: true) do |b|
-      b.input :item
-    end
+    form do |f|
+      inputs do
+        input :customer
+        input :starts_on
+        input :ends_on
+      end
 
-    actions
+      has_many(:booked_items, new_record: 'Add item', heading: 'Booked items', allow_destroy: true) do |b|
+        b.input :item
+      end
+
+      actions
+    end
   end
 end
