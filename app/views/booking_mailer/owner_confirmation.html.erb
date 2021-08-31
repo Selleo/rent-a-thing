@@ -1,0 +1,13 @@
+<p>Cześć, </p>
+<p>Nowa rezerwacja dla: <%= @booking.customer.full_name %></p>
+
+<p><%= "(#{@booking.starts_on} - #{@booking.ends_on})" %></p>
+
+<ul>
+  <% @booking.items.each do |item| %>
+    <li>
+      <%= item.name %>
+    </li>
+  <% end %>
+</ul>
+
