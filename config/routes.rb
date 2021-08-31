@@ -12,5 +12,6 @@ Rails.application.routes.draw do
     get 'bookings_by_item' => 'bookings_by_item#show', as: :bookings_by_item
     get 'new_customers_by_month' => 'new_customers_by_month#show', as: :new_customers_by_month
     post 'bookings/:id/confirm' => 'confirmations#create'
+    resources :bookings, only: :create
   end
 end
