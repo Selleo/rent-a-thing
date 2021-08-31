@@ -50,13 +50,9 @@ class V1::BookingApiController < ApplicationController
              .all
              .sort_by { |c| c.created_at }
              .group_by { |c| c.created_at.strftime('%b %Y') }
-             .map do |_key, _customers|
-      customers = []
-      _customers.each do |c|
-        customers.push(c.full_name)
-      end
-      customers_count = customers.uniq.count
-      { 'category' => _key, 'value' => customers_count } if customers_count > 0
+             .map do |key, customers|
+      count = customers.count
+      { 'category' => key, 'value' => count } if count > 0
     end
     render json: {
       data: {
