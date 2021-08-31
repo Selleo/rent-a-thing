@@ -1,7 +1,7 @@
 ActiveAdmin.register AdminUser do
   menu label: 'Users', parent: 'Administration'
 
-  permit_params :email, :password, :password_confirmation
+  permit_params :email, :password, :password_confirmation, :mail_notifications
 
   index do
     selectable_column
@@ -10,6 +10,7 @@ ActiveAdmin.register AdminUser do
     column :current_sign_in_at
     column :sign_in_count
     column :created_at
+    column :mail_notifications
     actions
   end
 
@@ -19,12 +20,13 @@ ActiveAdmin.register AdminUser do
   filter :created_at
 
   show do
-    panel "Admin User Details" do
+    panel 'Admin User Details' do
       attributes_table_for admin_user do
         row :email
         row :reset_password_token
         row :reset_password_sent_at
         row :remember_created_at
+        row :mail_notifications
       end
     end
   end
@@ -34,8 +36,8 @@ ActiveAdmin.register AdminUser do
       f.input :email
       f.input :password
       f.input :password_confirmation
+      f.input :mail_notifications
     end
     f.actions
   end
-
 end

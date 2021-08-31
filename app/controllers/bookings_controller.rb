@@ -18,7 +18,7 @@ class BookingsController < ApplicationController
     booking.update_attribute(:archived_at, Time.current)
     flash[:notice] = "Booking (ID: #{booking.id}) has been successfully archived"
     notify_about_archiving(booking, booking.customer)
-    AdminUser.all.each do |admin_user|
+    AdminUser.where(mail_notifications: true).each do |admin_user|
       notify_about_archiving(booking, admin_user)
     end
     redirect_to bookings_path
