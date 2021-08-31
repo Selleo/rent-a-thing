@@ -5,7 +5,7 @@ class Booking < ApplicationRecord
 
   validates :customer_id, :starts_on, :ends_on, presence: true
 
-  scope :not_archived, -> { where(archived_at: nil, ends_on: DateTime.current..DateTime::Infinity.new) }
+  scope :not_archived, -> { where(archived_at: nil, ends_on: DateTime.current..DateTime::Infinity.new, is_confirmed: true) }
   scope :in_month, ->(month) { where(starts_on: month.all_month) }
   scope :first_to_start, -> { order(:starts_on).first }
 

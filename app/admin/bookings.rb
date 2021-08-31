@@ -27,6 +27,7 @@ ActiveAdmin.register Booking do
           row :customer
           row :starts_on
           row :ends_on
+          row :is_confirmed
           row("Is Archived") { |booking| booking.archived_at != nil }
           row("Total price") { |booking|
             days = [1, (booking.ends_on - booking.starts_on).to_i].max
@@ -62,7 +63,6 @@ ActiveAdmin.register Booking do
   controller do
     def create
       create! do |_format|
-        BookingMailer.with(booking: @booking).notify_admin.deliver_now
         BookingMailer.with(booking: @booking).customer_confirmation.deliver_now
       end
     end
@@ -73,6 +73,7 @@ ActiveAdmin.register Booking do
       input :customer
       input :starts_on
       input :ends_on
+      input :is_confirmed
     end
 
     has_many(:booked_items, new_record: 'Add item', heading: 'Booked items', allow_destroy: true) do |b|
