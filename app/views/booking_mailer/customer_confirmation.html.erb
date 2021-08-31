@@ -1,0 +1,35 @@
+<h1>Booking confirmation for <%=@booking.customer.full_name %> </h1>
+
+
+<p>Cześć, </p>
+<p>Nowa rezerwacja dla: Imię nazwisko</p>
+
+<p>2021.08.22 - 2021.08.24</p>
+
+<ul>
+  <li>
+    Item 1
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+<p>
+
+  <ul>
+    <% @booking.items.each do |item| %>
+      <li>
+        <%= item.name %>
+      </li>
+    <% end %>
+</ul>
+
+</p>
