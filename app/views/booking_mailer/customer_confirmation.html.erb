@@ -11,6 +11,9 @@
   <% end %>
 </ul>
 
+<p>Potwierdź booking:</p>
+<a href="<%= url_for confirm_booking_url(@booking.id) %>" target="_blank">Potwierdź rezerwacje</a>
+
 <p>Jeżeli jednak chciałbyś zrezygnować, skorzystaj z linku poniżej: </p>
 
 <a href="<%= url_for @booking %>" target="_blank">Anuluj rezerwacje</a>

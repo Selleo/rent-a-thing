@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   resources :bookings, only: [:index, :show, :destroy]
+  get 'confirm_booking/:id' => 'bookings#update', as: :confirm_booking
 
   namespace :v1 do
     get "statistics/booked_days_by_month" => "bookings_api#index"

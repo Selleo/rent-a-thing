@@ -62,7 +62,6 @@ ActiveAdmin.register Booking do
   controller do
     def create
       create! do |_format|
-        BookingMailer.with(booking: @booking).notify_admin.deliver_now
         BookingMailer.with(booking: @booking).customer_confirmation.deliver_now
       end
     end

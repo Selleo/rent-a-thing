@@ -9,6 +9,17 @@ class BookingsController < ApplicationController
     @booking = Booking.not_archived.find(params[:id])
   end
 
+  def update
+    @booking = Booking.find(params[:id])
+    @booking.is_confirmed = true
+    @booking.save!
+
+    flash[:alert] = "Booking has been successfully confirmed"
+    BookingMailer.with(booking: @booking).notify_admin.deliver_now
+
+    redirect_to bookings_path
+  end
+
   def destroy
     @booking = Booking.not_archived.find(params[:id])
     @booking.archived_at = Time.current
