@@ -66,42 +66,6 @@ ActiveAdmin.register_page "Dashboard" do
           end
         end
 
-
-      end
-
-      column do
-        panel 'Bookings by item' do
-          react_component(
-            'ChartPanel',
-            title: 'Bookings by item',
-            series: [
-              {
-                type: 'pie',
-                dataUrl: v1_bookings_by_item_url
-              }
-            ]
-          )
-        end
-      end
-    end
-
-    columns do
-      column do
-        panel 'New customers by month' do
-          react_component(
-            'ChartPanel',
-            title: 'New customers by month',
-            chartConfig: {
-              yAxis: { title: { text: 'Customers' } },
-            },
-            series: [
-              {
-                type: 'bar',
-                dataUrl: v1_new_customers_by_month_url
-              },
-            ]
-          )
-        end
       end
     end
   end
