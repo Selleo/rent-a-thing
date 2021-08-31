@@ -15,7 +15,9 @@ class BookingsController < ApplicationController
     @booking.save!
 
     flash[:alert] = "Booking has been successfully confirmed"
-    BookingMailer.with(booking: @booking).notify_admin.deliver_now
+
+    admin_mails = AdminUser.with_notifications.map(&:email)
+    BookingMailer.with(booking: @booking, recipients: admin_mails).notify_admin.deliver_now
 
     redirect_to bookings_path
   end
@@ -27,7 +29,10 @@ class BookingsController < ApplicationController
 
     flash[:alert] = "Booking has been archived successfully"
 
-    BookingMailer.with(booking: @booking).archive_notification.deliver_now
+    BookingMailer.with(booking: @booking, recipients: @booking.customer.email).archive_notification.deliver_now
+
+    admin_mails = AdminUser.with_notifications.map(&:email)
+    BookingMailer.with(booking: @booking, recipients: admin_mails, for_admin: true).archive_notification.deliver_now
 
     redirect_to bookings_path
   end

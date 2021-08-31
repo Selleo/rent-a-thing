@@ -58,7 +58,7 @@ ActiveAdmin.register Booking do
   # ==== EDIT ====
   # ==============
 
-  permit_params :customer_id, :starts_on, :ends_on, booked_items_attributes: %i[id item_id _destroy]
+  permit_params :customer_id, :starts_on, :ends_on, :is_confirmed, booked_items_attributes: %i[id item_id _destroy]
 
   controller do
     def create
