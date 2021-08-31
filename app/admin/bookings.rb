@@ -48,9 +48,6 @@ ActiveAdmin.register Booking do
             column("Price per day") { |booked_item| booked_item.item.price_per_day }
           end
         end
-      end
-    end
-  end
 
   # ==============
   # ==== EDIT ====
@@ -62,6 +59,7 @@ ActiveAdmin.register Booking do
     def create
       create! do |_format|
         BookingMailer.with(booking: @booking).notify_admin.deliver_now
+        BookingMailer.with(booking: @booking).customer_confirmation.deliver_now
       end
     end
   end
