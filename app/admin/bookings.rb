@@ -11,7 +11,16 @@ ActiveAdmin.register Booking do
   controller do
     def create
       create! do |_format|
-        BookingMailer.with(booking: @booking).customer_confirmation.deliver_now
+        BookingMailer.with(
+          booking: @booking
+        ).customer_confirmation.deliver_now
+
+        AdminUser.find_each do |admin_user|
+          AdminMailer.with(
+            email: admin_user.email,
+            booking: @booking
+          ).admin_confirmation.deliver_now
+        end
       end
     end
   end
