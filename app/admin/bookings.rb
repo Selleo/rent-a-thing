@@ -58,6 +58,14 @@ ActiveAdmin.register Booking do
 
   permit_params :customer_id, :starts_on, :ends_on, booked_items_attributes: %i[id item_id _destroy]
 
+  controller do
+    def create
+      create! do |_format|
+        BookingMailer.with(booking: @booking).notify_admin.deliver_now
+      end
+    end
+  end
+
   form do |f|
     inputs do
       input :customer
