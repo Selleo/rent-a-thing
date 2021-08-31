@@ -11,4 +11,10 @@ class BookingMailer < ApplicationMailer
     @admin_user = params[:admin_user]
     mail(to: @admin_user.email, subject: '[Admin] Nowa Rezerwacaja')
   end
+
+  def notify_about_archiving
+    @booking = params[:booking]
+    @user = params[:user]
+    mail(to: @user.email, subject: "Booking (id: #{@booking.id}) was archived")
+  end
 end
