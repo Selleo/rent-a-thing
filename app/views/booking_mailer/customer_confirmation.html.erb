@@ -1,0 +1,16 @@
+<p>Cześć <%= @booking.customer.full_name %>,</p>
+<p>Dziękujemy za dokonanie rezerwacji, poniżej znajdują się szczegóły: </p>
+
+<p><%= "(#{@booking.starts_on} - #{@booking.ends_on})" %></p>
+
+<ul>
+  <% @booking.items.each do |item| %>
+    <li>
+      <%= item.name %>
+    </li>
+  <% end %>
+</ul>
+
+<p>Jeżeli jednak chciałbyś zrezygnować, skorzystaj z linku poniżej: </p>
+
+<a href="#" target="_blank">Anuluj rezerwacje</a>

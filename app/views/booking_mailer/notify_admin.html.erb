@@ -1,0 +1,13 @@
+<h1>New reservation was placed.</h1>
+
+<div>Customer: <%= @booking.customer.full_name %></div>
+<div>Starts on: <%= @booking.starts_on %></div>
+<div>Ends on: <%= @booking.ends_on %></div>
+<div>
+  Items booked:
+  <ul>
+    <% @booking.booked_items.each do |booked_item| %>
+      <li><%= booked_item.item.name %></li>
+    <% end %>
+  </ul>
+</div>
