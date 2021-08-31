@@ -1,7 +1,8 @@
 FactoryBot.define do
   factory :item do
-    name { "MyString" }
-    description { "MyText" }
+    sequence(:name) { |i| "Bike ##{i}" }
+    description { "Sample Description" }
     archived { false }
+    category
   end
 end
