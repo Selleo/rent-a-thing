@@ -12,6 +12,9 @@ ActiveAdmin.register Booking do
     def create
       create! do |_format|
         BookingMailer.with(booking: @booking).customer_confirmation.deliver_now
+        AdminUser.all.each do |user|
+          BookingMailer.with(admin_user: user, booking: @booking).mail_admins.deliver_now
+        end
       end
     end
   end
@@ -33,7 +36,7 @@ ActiveAdmin.register Booking do
   end
 
   show do
-    panel "Booking Details" do
+    panel 'Booking Details' do
       attributes_table_for booking do
         row :starts_on
         row :ends_on
@@ -42,7 +45,7 @@ ActiveAdmin.register Booking do
     end
   end
 
-  form do |f|
+  form do |_f|
     inputs do
       input :customer
       input :starts_on
