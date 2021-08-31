@@ -8,14 +8,7 @@ module V1
         { category: month.strftime('%Y-%m'), value: customers_count }
       end
 
-      render json: {
-        data: {
-          attributes: {
-            name: 'New Users',
-            value: result
-          }
-        }
-      }
+      render json: chart_result('New Users', result)
     end
   end
 end

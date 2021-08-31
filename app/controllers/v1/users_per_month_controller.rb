@@ -10,14 +10,7 @@ module V1
         { category: month.strftime('%Y-%m'), value: customer_count }
       end
 
-      render json: {
-        data: {
-          attributes: {
-            name: 'Users per Month',
-            value: result
-          }
-        }
-      }
+      render json: chart_result('Users per Month', result)
     end
   end
 end

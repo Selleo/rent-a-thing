@@ -13,14 +13,7 @@ module V1
         { category: month.strftime('%Y-%m'), value: income }
       end
 
-      render json: {
-        data: {
-          attributes: {
-            name: 'Income per Month',
-            value: result
-          }
-        }
-      }
+      render json: chart_result('Income per Month', result)
     end
   end
 end

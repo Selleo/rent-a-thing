@@ -10,4 +10,15 @@ module Helpers
 
     dates
   end
+
+  def chart_result(name, value)
+    {
+      data: {
+        attributes: {
+          name: name,
+          value: value
+        }
+      }
+    }
+  end
 end
