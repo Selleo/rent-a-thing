@@ -4,7 +4,7 @@ class BookingMailer < ApplicationMailer
   def notify_admin
     @booking = params[:booking]
 
-    AdminUser.all.each do |admin|
+    AdminUser.with_notifications.each do |admin|
       mail(to: admin.email, subject: 'A new reservation was placed.')
     end
   end
@@ -19,7 +19,7 @@ class BookingMailer < ApplicationMailer
     BookingMailer.send_archive_notification(@booking, @booking.customer.email).deliver_now
 
     @for_admin = true
-    AdminUser.all.each do |admin|
+    AdminUser.with_notifications.each do |admin|
       BookingMailer.send_archive_notification(@booking, admin.email, true).deliver_now
     end
   end

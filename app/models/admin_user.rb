@@ -6,4 +6,6 @@ class AdminUser < ApplicationRecord
 
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }, length: { maximum: 64 }
   validates :encrypted_password, presence: true
+
+  scope :with_notifications, -> { where(disabled_notifications: false) }
 end
