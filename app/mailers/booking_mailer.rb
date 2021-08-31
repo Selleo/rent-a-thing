@@ -17,4 +17,9 @@ class BookingMailer < ApplicationMailer
     @user = params[:user]
     mail(to: @user.email, subject: "Booking (id: #{@booking.id}) was archived")
   end
+
+  def confirm_reservation
+    @booking = params[:booking]
+    mail(to: @booking.customer.email, subject: 'You need to confirm your reservation')
+  end
 end

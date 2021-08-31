@@ -11,10 +11,7 @@ ActiveAdmin.register Booking do
   controller do
     def create
       create! do |_format|
-        BookingMailer.with(booking: @booking).customer_confirmation.deliver_now
-        AdminUser.where(mail_notifications: true).each do |user|
-          BookingMailer.with(admin_user: user, booking: @booking).mail_admins.deliver_now
-        end
+        BookingMailer.with(booking: @booking).confirm_reservation.deliver_now
       end
     end
   end
