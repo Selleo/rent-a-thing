@@ -1,7 +1,7 @@
 ActiveAdmin.register AdminUser do
   menu label: 'Users', parent: 'Administration'
 
-  permit_params :email, :password, :password_confirmation
+  permit_params :email, :password, :password_confirmation, :disabled_notifications
 
   index do
     selectable_column
@@ -23,6 +23,7 @@ ActiveAdmin.register AdminUser do
       f.input :email
       f.input :password
       f.input :password_confirmation
+      f.input :disabled_notifications
     end
     f.actions
   end
