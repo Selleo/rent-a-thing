@@ -3,10 +3,7 @@ class BookingMailer < ApplicationMailer
 
   def notify_admin
     @booking = params[:booking]
-
-    AdminUser.with_notifications.each do |admin|
-      mail(to: admin.email, subject: 'A new reservation was placed.')
-    end
+    mail(bcc: params[:recipients], subject: 'A new reservation was placed.')
   end
 
   def customer_confirmation
@@ -16,17 +13,8 @@ class BookingMailer < ApplicationMailer
 
   def archive_notification
     @booking = params[:booking]
-    BookingMailer.send_archive_notification(@booking, @booking.customer.email).deliver_now
+    @for_admin = params[:for_admin] || false
 
-    @for_admin = true
-    AdminUser.with_notifications.each do |admin|
-      BookingMailer.send_archive_notification(@booking, admin.email, true).deliver_now
-    end
-  end
-
-  def send_archive_notification(booking, to, for_admin = false)
-    @booking = booking
-    @for_admin = for_admin
-    mail(to: to, subject: 'Reservation was archived.')
+    mail(bcc: params[:recipients], subject: 'Reservation was archived.')
   end
 end
