@@ -27,6 +27,7 @@ ActiveAdmin.register Booking do
           row :customer
           row :starts_on
           row :ends_on
+          row("Is Archived") { |booking| booking.archived_at != nil }
           row("Total price") { |booking|
             days = [1, (booking.ends_on - booking.starts_on).to_i].max
             price = 0
@@ -50,34 +51,34 @@ ActiveAdmin.register Booking do
         end
       end
     end
+  end
 
-    # ==============
-    # ==== EDIT ====
-    # ==============
+  # ==============
+  # ==== EDIT ====
+  # ==============
 
-    permit_params :customer_id, :starts_on, :ends_on, booked_items_attributes: %i[id item_id _destroy]
+  permit_params :customer_id, :starts_on, :ends_on, booked_items_attributes: %i[id item_id _destroy]
 
-    controller do
-      def create
-        create! do |_format|
-          BookingMailer.with(booking: @booking).notify_admin.deliver_now
-          BookingMailer.with(booking: @booking).customer_confirmation.deliver_now
-        end
+  controller do
+    def create
+      create! do |_format|
+        BookingMailer.with(booking: @booking).notify_admin.deliver_now
+        BookingMailer.with(booking: @booking).customer_confirmation.deliver_now
       end
     end
+  end
 
-    form do |f|
-      inputs do
-        input :customer
-        input :starts_on
-        input :ends_on
-      end
-
-      has_many(:booked_items, new_record: 'Add item', heading: 'Booked items', allow_destroy: true) do |b|
-        b.input :item
-      end
-
-      actions
+  form do |f|
+    inputs do
+      input :customer
+      input :starts_on
+      input :ends_on
     end
+
+    has_many(:booked_items, new_record: 'Add item', heading: 'Booked items', allow_destroy: true) do |b|
+      b.input :item
+    end
+
+    actions
   end
 end

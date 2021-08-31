@@ -1,0 +1,7 @@
+<h1>Reservation was cancelled.</h1>
+
+<% if @for_admin %>
+<div>Customer <%= @booking.customer.full_name %> cancelled their reservation.</div>
+<% else %>
+<div>You have cancelled reservation #<%= @booking.id %>.</div>
+<% end %>

@@ -16,6 +16,8 @@ class BookingsController < ApplicationController
 
     flash[:alert] = "Booking has been archived successfully"
 
+    BookingMailer.with(booking: @booking).archive_notification.deliver_now
+
     redirect_to bookings_path
   end
 
