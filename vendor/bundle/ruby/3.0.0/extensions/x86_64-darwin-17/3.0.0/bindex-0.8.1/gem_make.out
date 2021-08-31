@@ -1,0 +1,15 @@
+current directory: /Users/arturdrzyzga/rent-a-thing/vendor/bundle/ruby/3.0.0/gems/bindex-0.8.1/ext/skiptrace
+/Users/arturdrzyzga/.rbenv/versions/3.0.1/bin/ruby -I /Users/arturdrzyzga/.rbenv/versions/3.0.1/lib/ruby/3.0.0 -r ./siteconf20210831-21388-1dlgkz.rb extconf.rb
+creating Makefile
+
+current directory: /Users/arturdrzyzga/rent-a-thing/vendor/bundle/ruby/3.0.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= clean
+
+current directory: /Users/arturdrzyzga/rent-a-thing/vendor/bundle/ruby/3.0.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\=
+compiling cruby.c
+linking shared-object skiptrace/internal/cruby.bundle
+
+current directory: /Users/arturdrzyzga/rent-a-thing/vendor/bundle/ruby/3.0.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= install
+/usr/local/bin/ginstall -c -m 0755 cruby.bundle ./.gem.20210831-21388-v7c4o0/skiptrace/internal

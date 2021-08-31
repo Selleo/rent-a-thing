@@ -1,0 +1,16 @@
+current directory: /Users/arturdrzyzga/rent-a-thing/vendor/bundle/ruby/3.0.0/gems/racc-1.5.2/ext/racc/cparse
+/Users/arturdrzyzga/.rbenv/versions/3.0.1/bin/ruby -I /Users/arturdrzyzga/.rbenv/versions/3.0.1/lib/ruby/3.0.0 -r ./siteconf20210831-21388-oply8y.rb extconf.rb
+checking for rb_ary_subseq()... yes
+creating Makefile
+
+current directory: /Users/arturdrzyzga/rent-a-thing/vendor/bundle/ruby/3.0.0/gems/racc-1.5.2/ext/racc/cparse
+make DESTDIR\= clean
+
+current directory: /Users/arturdrzyzga/rent-a-thing/vendor/bundle/ruby/3.0.0/gems/racc-1.5.2/ext/racc/cparse
+make DESTDIR\=
+compiling cparse.c
+linking shared-object racc/cparse.bundle
+
+current directory: /Users/arturdrzyzga/rent-a-thing/vendor/bundle/ruby/3.0.0/gems/racc-1.5.2/ext/racc/cparse
+make DESTDIR\= install
+/usr/local/bin/ginstall -c -m 0755 cparse.bundle ./.gem.20210831-21388-u7az4e/racc

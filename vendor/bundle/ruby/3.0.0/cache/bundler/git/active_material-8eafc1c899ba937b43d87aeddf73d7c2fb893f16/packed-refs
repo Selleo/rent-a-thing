@@ -1,0 +1,26 @@
+# pack-refs with: peeled fully-peeled sorted 
+56085a273b6c3808b6d18a825af5c60f25d70bb7 refs/heads/bt-nh-table-actions-fix
+189b12d0319ae8ac7f79fc3e0b4cc7c2d7f11d61 refs/heads/gh-pages
+1e97a5cf66a216ce89abe097fb9bdc9a2f78ce95 refs/heads/jf-ticket-20
+b898ffea7a6c3549d9f62a5cf672a1a0a6eebd30 refs/heads/master
+69a88e352f71fed5720f403b7c6274104114bb9b refs/heads/nh-redesign
+fc5996ff3f89a2f41a279e761f4c2a43d10df72f refs/heads/nh-responsive-redesign
+6a14521a787a54b43894e015c75ac96862a95d3e refs/heads/underscore-prefix
+ea09eaccf07c49508a3a5e5b3dbfbf41a5f85a83 refs/tags/1.5.1
+b0cc147cf15d0f5826376b1a11765d7bf025e99e refs/tags/1.5.2
+a09e4e6613d193678d969edb3ba905f9a2047f5c refs/tags/v0.0.1
+^ba30604c1457debfee56f0d033d61f2f9ac7b899
+27420eb4bb5869056b5955423e9da64c3d8016d2 refs/tags/v1.0.0
+^526650c2397beff534355a77c03240022e72db52
+608d5c802b697b9e7603b5aa401a7d8bdaba92cf refs/tags/v1.1.0
+^7adf1591f86f336497bcffddc9c384d30ac63d73
+6cef1e4f77c5b905c2d1a3e63245090ce1a43d90 refs/tags/v1.2.0
+^d9c844ddb41fa370dace2d834452166cc9990c42
+458082775cb37c273b4a59d68207ab780eb427f7 refs/tags/v1.3.0
+^a0305c3dc3e18e33d4036dffa9b487aea4c677c3
+1845bf64b75881b046a17d01db234bfde471a43c refs/tags/v1.3.1
+^68d6b2519addb477a7e5f1e70e975675f58e9f22
+22b084a6be41770154221dbc2336aa4cc8e26323 refs/tags/v1.4.0
+^0895cbee641cb14644b760ee2b148bd88c30d1bd
+189b12d0319ae8ac7f79fc3e0b4cc7c2d7f11d61 refs/tags/v1.4.1
+22f8aa0654e62229ba9d23a1a7db94dacc0463c1 refs/tags/v1.5.0

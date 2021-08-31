@@ -9,4 +9,8 @@ Rails.application.routes.draw do
     get 'available_items' => 'available_items#index'
     get 'booked_days_by_month' => 'booked_days_by_month#show', as: :booked_days_by_month
   end
+
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+    
 end
+

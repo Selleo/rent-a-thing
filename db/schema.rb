@@ -76,9 +76,9 @@ ActiveRecord::Schema.define(version: 2021_08_25_151729) do
   end
 
   create_table "items", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.text "description"
-    t.boolean "archived"
+    t.boolean "archived", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "category_id"
