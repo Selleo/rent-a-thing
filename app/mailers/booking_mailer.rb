@@ -16,4 +16,9 @@ class BookingMailer < ApplicationMailer
     @booking = params[:booking]
     mail(to: @booking.customer.email, subject: 'Cofnięcie rezerwacji')
   end
+
+  def send_booking_confirmation
+    @booking = params[:booking]
+    mail(to: @booking.customer.email, subject: 'Potwierdź rezerwację')
+  end
 end

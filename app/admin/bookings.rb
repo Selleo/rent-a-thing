@@ -11,7 +11,7 @@ ActiveAdmin.register Booking do
   controller do
     def create
       create! do |_format|
-        BookingMailer.with(booking: @booking).customer_confirmation.deliver_now
+        BookingMailer.with(booking: @booking).send_booking_confirmation.deliver_now
         AdminUser.all.each do |admin|
           BookingMailer.with(booking: @booking, admin_user:admin).inform_admin.deliver_now if !admin.disabled_notifications
         end

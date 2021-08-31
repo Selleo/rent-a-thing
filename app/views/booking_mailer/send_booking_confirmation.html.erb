@@ -1,0 +1,15 @@
+<p>Cześć <%= @booking.customer.full_name %>,</p>
+<p>Prosimy o potwierdzenie rezerwacji, poniżej znajdują się szczegóły: </p>
+
+<p><%= "(#{@booking.starts_on} - #{@booking.ends_on})" %></p>
+
+<ul>
+  <% @booking.items.each do |item| %>
+    <li>
+      <%= item.name %>
+    </li>
+  <% end %>
+</ul>
+
+<p>Jeżeli chcesz potwierdzić rezerwację kliknij przycisk poniżej:</p>
+<a href=<%= "http://localhost:3000/v1/confirm_booking/#{@booking.id}" %>>POTWIERDŹ</a>
