@@ -1,6 +1,7 @@
 class V1::BookingsCreationController < ActionController::API
   def create
     return bad_request if Date.parse(params[:starts_on]) < Date.today
+    return bad_request if Date.parse(params[:starts_on]) > Date.parse(params[:ends_on])
     return bad_request if params[:item_ids].first == ''
 
     customer = Customer.create(
