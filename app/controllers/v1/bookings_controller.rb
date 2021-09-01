@@ -6,14 +6,28 @@ class V1::BookingsController < ActionController::API
       phone: params[:customer_phone]
     )
 
-    booking = customer.bookings.find_or_create_by!(
+    booking = customer.bookings.find_by(
       starts_on: params[:starts_on].to_date,
       ends_on: params[:ends_on].to_date,
       archived_at: nil
     )
 
-    if !booking.booked_items.present?
+    unless booking.present?
+      booking = customer.bookings.create!(
+        starts_on: params[:starts_on].to_date,
+        ends_on: params[:ends_on].to_date
+      )
+
       params[:item_ids].each do |item_id|
+        item = Item.find(item_id)
+
+        if item.bookings.where(starts_on: booking.starts_on..booking.ends_on).present? ||
+          item.bookings.where(ends_on: booking.starts_on..booking.ends_on).present?
+
+          booking.destroy!
+          return render html: 'item_conflict', status: 409
+        end
+
         booking.items << Item.find(item_id)
       end
     end
