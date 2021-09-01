@@ -1,5 +1,6 @@
 class BookingMailer < ApplicationMailer
   default from: 'notifications@rent-a-thing.com'
+  layout 'mailer'
 
   def customer_confirmation
     @booking = params[:booking]
