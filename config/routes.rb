@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :bookings, only: [:index, :show, :destroy]
 
   namespace :v1 do
+    resources :bookings, only: [:create]
     get 'available_items' => 'available_items#index'
     get 'booked_days_by_month' => 'booked_days_by_month#show', as: :booked_days_by_month
     get 'booked_bikes' => 'booked_bikes#show', as: :booked_bikes
