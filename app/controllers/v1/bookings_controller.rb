@@ -3,14 +3,14 @@ module V1
     def create
       customer = Customer.create(full_name: params[:customer_name], phone: params[:customer_phone])
       booking = Booking.create(starts_on: params[:starts_on], ends_on: params[:ends_on], customer_id: customer.id)
-      item=nil
-      params[:item_ids].each do |item_id|
-        BookedItem.create(item_id: item_id, booking_id: booking.id)
-        item = Item.find(item_id)
-      end
 
+      items = params[:item_ids].map do |item_id|
+        BookedItem.create(item_id: item_id, booking_id: booking.id)
+        Item.find(item_id).name
+      end
+      
       render status: :created, json: {
-        "booked_items": item.name,
+        "booked_items": items.join(', '),
         "booking_id": booking.id,
         "customer_name": customer.full_name,
         "customer_phone": customer.phone,

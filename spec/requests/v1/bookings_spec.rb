@@ -51,7 +51,7 @@ RSpec.describe '/v1/bookings' do
     end
 
     context 'when provided with multiple item ids' do
-      fit 'books all of the items' do
+      it 'books all of the items' do
         item = create(:item, name: 'Fantom 24X')
         another_item = create(:item, name: 'Dust-diver F1000')
 
