@@ -3,6 +3,10 @@ module V1
     def create
 
       # binding.pry
+      if params.fetch(:starts_on)<Date.current.strftime("%Y-%m-%d") || params.fetch(:starts_on)>params.fetch(:ends_on) || params.fetch(:customer_name).empty? || params.fetch(:customer_phone).empty?
+        # binding.pry
+        return render status: :bad_request, json: {}
+      end
 
       if params.fetch(:item_ids)[0].empty?
         return render status: :bad_request, json: {}
