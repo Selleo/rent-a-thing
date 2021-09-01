@@ -8,6 +8,15 @@ ActiveAdmin.register Booking do
   filter :customer
   filter :created_at
 
+  controller do
+    def create
+      create! do |_format|
+        BookingMailer.with(booking: @booking).customer_confirmation.deliver_now
+        BookingMailer.with(booking: @booking).admin_users_confirmation.deliver_now
+      end
+    end
+  end
+
   # ==============
   # ==== EDIT ====
   # ==============
