@@ -4,7 +4,7 @@ class Item < ApplicationRecord
   belongs_to :category
   has_one_attached :image      
 
-  validates :price, presence: true, numericality: true
+  #validates :price, presence: true, numericality: true
 
   scope :active, -> { where(archived: false) }
   scope :archived, -> { where(archived: true) }

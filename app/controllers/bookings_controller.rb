@@ -11,6 +11,7 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.available.find(params[:id])
+    render json: {message: "success"}, status: 200
   end
 
   def destroy

@@ -13,5 +13,6 @@ Rails.application.routes.draw do
     get 'bookings_by_items' => 'booking_api#bookings_by_item', as: :bookings_by_item
     get 'new_customers_by_month' => 'booking_api#new_customers_by_month', as: :new_customers_by_month
     post 'bookings/:id/confirm' => 'confirmations#create'
+    post 'bookings' => 'bookings_creation#create'
   end
 end

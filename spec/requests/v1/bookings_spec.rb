@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe '/v1/bookings' do
   describe 'POST /v1/bookings' do
-    it 'creates a booking for given item, customer and time span' do
+    fit 'creates a booking for given item, customer and time span' do
       item = create(:item)
 
       travel_to(Date.new(2021, 6, 1)) do
