@@ -73,7 +73,7 @@ RSpec.describe '/v1/bookings' do
     end
 
     context 'when any of given items was already booked in requested time frame' do
-      it 'responds with 409 Conflict' do
+      fit 'responds with 409 Conflict' do
         item = create(:item, name: 'Fantom 24X')
         another_item = create(:item, name: 'Dust-diver F1000')
         create(
@@ -100,7 +100,7 @@ RSpec.describe '/v1/bookings' do
     end
 
     context 'when no items were specified' do
-      it 'responds with 400 Bad Request' do
+      fit 'responds with 400 Bad Request' do
         travel_to(Date.new(2021, 6, 1)) do
           post '/v1/bookings', params: {
             customer_name: 'Tony Halik',
