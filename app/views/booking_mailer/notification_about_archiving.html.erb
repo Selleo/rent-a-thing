@@ -1,0 +1,13 @@
+
+<p>Informujemy że poniższa rezerwacja została zarchiwizowana: </p>
+
+<p><%= "(#{@booking.starts_on} - #{@booking.ends_on})" %></p>
+
+<ul>
+  <% @booking.items.each do |item| %>
+    <li>
+      <%= item.name %>
+    </li>
+  <% end %>
+</ul>
+
