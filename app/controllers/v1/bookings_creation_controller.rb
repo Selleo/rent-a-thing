@@ -4,6 +4,7 @@ class V1::BookingsCreationController < ActionController::API
     return bad_request if Date.parse(params[:starts_on]) > Date.parse(params[:ends_on])
     return bad_request if params[:item_ids].first == ''
     return bad_request if params[:customer_name].empty?
+    return bad_request if params[:customer_phone].empty?
 
     customer = Customer.create(
       full_name: params[:customer_name],
