@@ -16,6 +16,7 @@ module V1
       # return all items but those aggregated
       available_items = Item.where.not(id: booked_items.map(&:id))
 
-      render json: available_items.as_json(only: [:id, :name, :description])
+      render json: available_items.as_json(only: %i[id name description])
     end
   end
+end
