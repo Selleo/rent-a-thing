@@ -187,5 +187,22 @@ RSpec.describe '/v1/bookings' do
         end
       end
     end
+
+    it 'creates a booking for given item, customer and time span, but do not create a new customer if exists' do
+      item = create(:item)
+      customer = create(:customer, full_name: 'Tony Halik', phone: '+48509111111')
+
+      travel_to(Date.new(2021, 6, 1)) do
+        expect {
+          post '/v1/bookings', params: {
+            customer_name: 'Tony Halik',
+            customer_phone: '+48509111111',
+            starts_on: '2021-10-01',
+            ends_on: '2021-10-02',
+            item_ids: [item.id]
+          }
+        }.to_not change { Customer.count }
+      end
+    end
   end
 end

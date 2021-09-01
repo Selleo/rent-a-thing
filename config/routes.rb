@@ -13,5 +13,6 @@ Rails.application.routes.draw do
     get 'new_customers_by_month' => 'new_customers_by_month#index', as: :new_customers_by_month
     get 'all_customers_by_month' => 'all_customers_by_month#index', as: :all_customers_by_month
     get 'confirm_booking/:id' => 'confirm_booking#index'
+    post 'bookings' => "bookings#create"
   end
 end
