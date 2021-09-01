@@ -4,5 +4,9 @@ FactoryBot.define do
     ends_on { starts_on + 1.week }
     customer
     items { [create(:item)] }
+
+    trait :not_confirmed do
+      confirmed_at { nil }
+    end
   end
 end
