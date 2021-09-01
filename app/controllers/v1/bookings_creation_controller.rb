@@ -12,8 +12,10 @@ class V1::BookingsCreationController < ActionController::API
     )
 
     booking_query_dates = (Date.parse(params[:starts_on])..Date.parse(params[:ends_on]))
-    # booking_query_dates.overlaps?(item_dates)
+    return render json: { message: 'Bad Request' }, status: 400 if params[:item_ids].first == ''
+
     items = Item.find(params[:item_ids])
+
     any_item_overlaps = false
     items.each do |i|
       next unless i.bookings.count > 0
