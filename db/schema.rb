@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 2021_08_31_170120) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "archived_at"
+    t.datetime "confirmed_at"
     t.index ["customer_id"], name: "index_bookings_on_customer_id"
   end
 
