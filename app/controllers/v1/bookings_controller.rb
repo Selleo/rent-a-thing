@@ -1,6 +1,13 @@
 module V1
   class BookingsController < ActionController::API
     def create
+
+      # binding.pry
+
+      if params.fetch(:item_ids)[0].empty?
+        return render status: :bad_request, json: {}
+      end
+
       customer = Customer.create(full_name: params[:customer_name], phone: params[:customer_phone])
 
       params[:item_ids].map do |item_id|
