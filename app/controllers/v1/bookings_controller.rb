@@ -1,5 +1,9 @@
 class V1::BookingsController < ActionController::API
   def create
+    if params.require(:item_ids)
+      return render html: "empty_item_ids", status: :bad_request
+    end
+
     customer = Customer.find_or_create_by!(
       full_name: params[:customer_name],
       email: params[:customer_email],
