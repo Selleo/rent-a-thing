@@ -1,5 +1,8 @@
 class V1::BookingsCreationController < ActionController::API
   def create
+    return bad_request if Date.parse(params[:starts_on]) < Date.today
+    return bad_request if params[:item_ids].first == ''
+
     customer = Customer.create(
       full_name: params[:customer_name],
       phone: params[:customer_phone]
@@ -12,7 +15,6 @@ class V1::BookingsCreationController < ActionController::API
     )
 
     booking_query_dates = (Date.parse(params[:starts_on])..Date.parse(params[:ends_on]))
-    return render json: { message: 'Bad Request' }, status: 400 if params[:item_ids].first == ''
 
     items = Item.find(params[:item_ids])
 
@@ -41,5 +43,9 @@ class V1::BookingsCreationController < ActionController::API
       'ends_on': booking.ends_on,
       'booked_items': booking.items.map(&:name).join(', ')
     }, status: 201
+  end
+
+  def bad_request
+    render json: { message: 'Bad Request' }, status: 400
   end
 end

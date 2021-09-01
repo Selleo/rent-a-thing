@@ -116,7 +116,7 @@ RSpec.describe '/v1/bookings' do
     end
 
     context 'when booking start time is in the past' do
-      it 'responds with 400 Bad Request' do
+      fit 'responds with 400 Bad Request' do
         item = create(:item)
 
         travel_to(Date.new(2021, 6, 1)) do
