@@ -12,12 +12,18 @@ class V1::BookingsController < ActionController::API
       archived_at: nil
     )
 
-    return render json: booking if booking.present?
-
-    params[:item_ids].each do |item_id|
-      booking.items << Item.find(item_id)
+    if !booking.booked_items.present?
+      params[:item_ids].each do |item_id|
+        booking.items << Item.find(item_id)
+      end
     end
 
-    head :created
+    render json: {
+      customer_name: customer.full_name,
+      customer_phone: customer.phone,
+      booking_id: booking.id,
+      booked_items: booking.booked_items.map { |booked_item| booked_item.item.name }.join(', ')
+    }.merge(booking.as_json(only: %i[starts_on ends_on])), status: :created
+
   end
 end
