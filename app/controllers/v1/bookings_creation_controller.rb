@@ -1,43 +1,37 @@
 class V1::BookingsCreationController < ActionController::API
   def create
+    # Validate Request
     return bad_request if Date.parse(params[:starts_on]) < Date.today
     return bad_request if Date.parse(params[:starts_on]) > Date.parse(params[:ends_on])
     return bad_request if params[:item_ids].first == ''
     return bad_request if params[:customer_name].empty?
     return bad_request if params[:customer_phone].empty?
 
-    customer = Customer.create(
-      full_name: params[:customer_name],
-      phone: params[:customer_phone]
-    )
-
-    booking = Booking.new(
-      customer_id: customer.id,
-      starts_on: params[:starts_on],
-      ends_on: params[:ends_on]
-    )
-
-    booking_query_dates = (Date.parse(params[:starts_on])..Date.parse(params[:ends_on]))
-
+    # Validate Items Overlaps
     items = Item.find(params[:item_ids])
-
-    any_item_overlaps = false
-    items.each do |i|
-      next unless i.bookings.count > 0
-
-      i.bookings.each do |b|
-        item_booking_dates = (b.starts_on..b.ends_on)
-        any_item_overlaps = true if item_booking_dates.overlaps?(booking_query_dates)
+    booking_query_dates = (Date.parse(params[:starts_on])..Date.parse(params[:ends_on]))
+    any_item_overlaps = items.any? do |item|
+      item.bookings.any? do |booking|
+        (booking.starts_on..booking.ends_on).overlaps?(booking_query_dates)
       end
     end
-    if any_item_overlaps
-      booking.destroy
-      customer.destroy
-      return render json: { message: 'Conflict' }, status: 409
-    end
-    booking.items = items
 
-    booking.save!
+    # Render Error if any item failed above validation
+    return render json: { message: 'Conflict' }, status: 409 if any_item_overlaps
+
+    # Create Persistent Objects
+    customer = Customer.where(
+      full_name: params[:customer_name],
+      phone: params[:customer_phone]
+    ).first_or_create
+
+    booking = customer.bookings.create(
+      starts_on: params[:starts_on],
+      ends_on: params[:ends_on],
+      items: items
+    )
+
+    # Render Output
     render json: {
       'booking_id': booking.id,
       'customer_name': booking.customer.full_name,
