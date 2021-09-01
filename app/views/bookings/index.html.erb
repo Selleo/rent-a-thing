@@ -11,6 +11,8 @@
     <th>Customer</th>
     <th>Starts</th>
     <th>Ends</th>
+    <th>Archived at</th>
+    <th colspan="2">Actions</th>
   </tr>
 
   <%= render partial: 'booking', collection: @bookings.not_archived %>
