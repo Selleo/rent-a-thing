@@ -5,4 +5,6 @@ class Item < ApplicationRecord
 
   scope :active, -> { where(archived: false) }
   scope :archived, -> { where(archived: true) }
+
+  has_one_attached :item_photo
 end
