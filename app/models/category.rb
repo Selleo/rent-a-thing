@@ -1,4 +1,4 @@
 class Category < ApplicationRecord
   has_many :items
-  has_one_attached :foto
+  has_many_attached :fotos
 end

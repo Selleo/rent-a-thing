@@ -15,7 +15,7 @@ ActiveAdmin.register Item do
   # ==== FORM ====
   # ==============
 
-  permit_params :name, :description, :category_id, :archived
+  permit_params :name, :description, :category_id, :archived, :fotos
 
   form do |f|
     inputs do
@@ -23,8 +23,20 @@ ActiveAdmin.register Item do
       input :description
       input :category
       input :archived
+      input :fotos, as: :file
     end
 
     actions
+  end
+
+
+  controller do
+    def create
+      @item = Item.new
+      binding.pry
+      @item.booked_items = params[:item][]
+      
+  
+    end    
   end
 end

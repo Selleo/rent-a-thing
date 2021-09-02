@@ -1,0 +1,6 @@
+# < ActionController::Parameters {
+  "authenticity_token" => "_110ciYMRAOCD6sMTdnbjh3U7sfjdisz7fuQVCA6EnExJ-sCQNauh9jY9UHiwODJJ1lw7ZVB0ULfYm-w9qDi3g", "item" => {
+    "name" => "Nowy model", "description" => "ggg", "category_id" => "2", "archived" => "0", "fotos" => # < ActionDispatch::Http::UploadedFile: 0x00007f9bccbd3390 @tempfile = # < Tempfile: /tmp/RackMultipart20210902 - 57087 - rsqcn9.jpg > , @original_filename = "DISNEY-Ksiezniczka-14-cali-dla-dziewczynki-skos.jpg", @content_type = "image/jpeg", @headers = "Content-Disposition: form-data; name=\"item[fotos]\"; filename=\"DISNEY-Ksiezniczka-14-cali-dla-dziewczynki-skos.jpg\"\r\nContent-Type: image/jpeg\r\n" >
+  }, "commit" => "Create Item", "controller" => "admin/items", "action" => "create"
+}
+permitted: false >

@@ -28,7 +28,8 @@ ActiveAdmin.register Category do
       @category.foto.attach(params[:category][:foto])
       @category.save
 
-      redirect_back(fallback_location: root_path)
+    
+      redirect_back(fallback_location: "/")
     end
   end
 
