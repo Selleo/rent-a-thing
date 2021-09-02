@@ -14,5 +14,8 @@ Rails.application.routes.draw do
     get 'all_customers_by_month' => 'all_customers_by_month#index', as: :all_customers_by_month
     get 'confirm_booking/:id' => 'confirm_booking#index'
     post 'bookings' => "bookings#create"
+
+    resources :items, only: [:index, :show]
+    get 'items/:id/delete_image/:image_id' => 'items#delete_item_image'
   end
 end

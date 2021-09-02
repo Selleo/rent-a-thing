@@ -53,7 +53,12 @@ ActiveAdmin.register Item do
             ul do
               item.photos.each do |photo|
                 li do
-                  image_tag(url_for(photo))
+                  div do
+                    image_tag(url_for(photo))
+                  end
+                  div do
+                    link_to('delete',"/v1/items/#{item.id}/delete_image/#{photo.id}")
+                  end
                 end
               end
             end
