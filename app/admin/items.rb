@@ -15,14 +15,21 @@ ActiveAdmin.register Item do
   # ==== FORM ====
   # ==============
 
-  permit_params :name, :description, :category_id, :price, :archived, :image
+  permit_params :name, :description, :category_id, :price, :archived, item_images: []
 
   controller do
     def create
-      create! do |format|
-        flash[:notice] = 'New item name'
-        format.html { redirect_to admin_items_path }
-      end
+      @item = Item.new
+      @item.name = params[:item][:name]
+      @item.description = params[:item][:description]
+      @item.category_id = params[:item][:category_id]
+      @item.archived = params[:item][:archived]
+      @item.price = params[:item][:price]
+      @item.item_images.attach(params[:item][:item_images])
+      @item.save
+
+      flash[:notice] = 'New item name'
+      redirect_to admin_items_path
     end
 
     def update
@@ -32,17 +39,6 @@ ActiveAdmin.register Item do
 
   index do
     selectable_column
-
-    # if image.present?
-    # image_column :image, style: :thumb
-    # end
-
-    # column "Image" do |item|
-
-    # image_tag item.image
-    # image_tag (item.image,width:100,height:80)
-    # end
-
     column :id
     column :name
     column :description
@@ -54,11 +50,11 @@ ActiveAdmin.register Item do
 
   show do
     panel 'Item Details' do
-      if item.image.present?
-        div do
-          image_tag item.image
-        end
-      end
+      # if item.image.present?
+      #   div do
+      #     image_tag item.image
+      #   end
+      # end
 
       attributes_table_for item do
         row :name
@@ -68,6 +64,16 @@ ActiveAdmin.register Item do
         row :price
         row 'Bookings' do |item|
           item.bookings.count
+        end
+        binding.pry
+        row :item_images do
+          div do
+            item.item_images.each do |img|
+              div do
+                image_tag url_for(img), size: '200x200'
+              end
+            end
+          end
         end
       end
     end
@@ -83,7 +89,7 @@ ActiveAdmin.register Item do
     end
 
     f.inputs do
-      f.input :image, as: :file
+      f.input :item_images, as: :file, input_html: { multiple: true }
     end
 
     actions
