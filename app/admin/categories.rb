@@ -50,7 +50,6 @@ ActiveAdmin.register Category do
             image_tag(url_for(category.foto)) if category.foto.present?
           end
         end
-
         active_admin_comments
       end
 
@@ -64,4 +63,5 @@ ActiveAdmin.register Category do
       end
     end
   end
+  
 end
