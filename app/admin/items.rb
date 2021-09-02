@@ -37,6 +37,18 @@ ActiveAdmin.register Item do
 
       redirect_to(admin_items_path)
     end
+
+    def update
+      @item = Item.find(params[:id])
+      @item.name = params[:item][:name]
+      @item.description = params[:item][:description]
+      @item.category_id = params[:item][:category_id]
+      @item.archived = params[:item][:archived]
+      @item.photos.attach(params[:item][:photos])
+      @item.save
+
+      redirect_to "#{collection_path}/#{@item.id}"
+    end
   end
 
   show do
