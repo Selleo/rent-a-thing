@@ -187,5 +187,27 @@ RSpec.describe '/v1/bookings' do
         end
       end
     end
+
+    context 'when customer exists' do
+      it 'create booking with existing customer' do
+        customer = create(:customer, full_name: "John Smith", phone: "+48123456789", email: "john@smith.com")
+        item = create(:item, name: "Rower")
+
+        travel_to(Date.new(2021, 6, 1)) do
+          expect {
+            post '/v1/bookings', params: {
+              customer_name: "John Smith",
+              customer_phone: "+48123456789",
+              customer_email: "john@smith.com",
+              starts_on: '2021-06-15',
+              ends_on: '2021-06-18',
+              item_ids: [item.id]
+            }
+          }.to change {
+            customer.bookings.count
+          }.from(0).to(1)
+        end
+      end
+    end
   end
 end
