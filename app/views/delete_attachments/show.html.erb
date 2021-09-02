@@ -1,0 +1,19 @@
+<div class="padding-wrapper">
+  <%= link_to "Go Back", delete_attachments_path %>
+  <h1>Editing Attachments For Item: <%= @item.name %></h1>
+  <% if @item_attachments.count > 0 %>
+    <h3>Attachments (<%= @item_attachments.count %>)</h3>
+
+    <div class="item-grid">
+      <% @item_attachments.each do |attachment| %>
+        <div>
+          <%= image_tag url_for(attachment) %>
+          <a href="<%= "/v1/delete_item_image?item_id=#{@item.id}&attachment_id=#{attachment.id}" %>">Delete</a>
+        </div>
+      <% end %>
+    </div>
+  <% elsif %>
+    <h3>Item Has No Attachments</h3>
+  <% end %>
+  <a href="<%= "/admin/items/#{@item.id}/edit" %>">Edit this item</a>
+</div>

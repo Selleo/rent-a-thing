@@ -19,3 +19,26 @@ th {
   padding: 4px 8px;
   border-bottom: #00c9b6 solid 1px;
 }
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+.item-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  row-gap: 1rem;
+}
+
+.padding-wrapper {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  .heading--centered {
+    text-align: center;
+  }
+  > div {
+    padding: 0.5rem 0;
+  }
+}

@@ -1,0 +1,11 @@
+<div class="padding-wrapper">
+  <h1 class='heading--centered'>Select Item</h1>
+  <div class="item-grid">
+    <% @items.each do |item| %>
+      <div>
+        <span><%= item.name %> <b>(<%= item.item_images.count %>)</b></span>
+        <%= link_to "Select", delete_attachment_path(item.id) %>
+      </div>
+    <% end %>
+  </div>
+</div>

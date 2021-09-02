@@ -50,12 +50,6 @@ ActiveAdmin.register Item do
 
   show do
     panel 'Item Details' do
-      # if item.image.present?
-      #   div do
-      #     image_tag item.image
-      #   end
-      # end
-
       attributes_table_for item do
         row :name
         row :description
@@ -65,7 +59,6 @@ ActiveAdmin.register Item do
         row 'Bookings' do |item|
           item.bookings.count
         end
-        binding.pry
         row :item_images do
           div do
             item.item_images.each do |img|
@@ -79,19 +72,15 @@ ActiveAdmin.register Item do
     end
   end
 
-  form do |f|
+  form do |_f|
     inputs do
       input :name
       input :description
       input :category
       input :archived
       input :price
+      input :item_images, as: :file, input_html: { multiple: true }
     end
-
-    f.inputs do
-      f.input :item_images, as: :file, input_html: { multiple: true }
-    end
-
     actions
   end
 end
