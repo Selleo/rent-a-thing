@@ -1,5 +1,6 @@
 <div class="padding-wrapper">
   <%= link_to "Go Back", delete_attachments_path %>
+  <a href="<%= "/admin/items/#{@item.id}/edit" %>">Edit this item</a>
   <h1>Editing Attachments For Item: <%= @item.name %></h1>
   <% if @item_attachments.count > 0 %>
     <h3>Attachments (<%= @item_attachments.count %>)</h3>
@@ -15,5 +16,4 @@
   <% elsif %>
     <h3>Item Has No Attachments</h3>
   <% end %>
-  <a href="<%= "/admin/items/#{@item.id}/edit" %>">Edit this item</a>
 </div>
