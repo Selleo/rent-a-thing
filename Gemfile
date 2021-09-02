@@ -36,6 +36,9 @@ gem 'devise'
 gem 'draper'
 gem 'rails-patterns'
 gem 'active_material', github: 'vigetlabs/active_material'
+gem "rails-erd" 
+
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

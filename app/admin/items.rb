@@ -15,16 +15,50 @@ ActiveAdmin.register Item do
   # ==== FORM ====
   # ==============
 
-  permit_params :name, :description, :category_id, :archived
+  permit_params :name, :description, :category_id, :archived, :image
+
+  # form do |f|
+  #   inputs do
+  #     input :name
+  #     input :description
+  #     input :category
+  #     input :archived
+  #   end
+
+  #   actions
+  # end
+
+  show do
+    div do
+      image_tag item.image
+    end
+    default_main_content 
+  end
+
+
+
+
+
 
   form do |f|
-    inputs do
-      input :name
-      input :description
-      input :category
-      input :archived
-    end
+    f.semantic_errors # shows errors on :base
+    
+    input :name 
+    input :description
+    input :archived
+    # f.inputs          # builds an input field for every attribute
 
-    actions
+    f.inputs do 
+      f.input :image, as: :file
+    end  
+    f.actions         # adds the 'Submit' and 'Cancel' buttons
   end
+
+
+
+
+
+
+
+
 end
