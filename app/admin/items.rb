@@ -3,6 +3,20 @@ ActiveAdmin.register Item do
 
   permit_params :name, :description, :archived, [:photos]
 
+  member_action :delete_item_image, method: :delete do
+    # binding.pry
+    image = ActiveStorage::Attachment.find(params[:id])
+    # binding.pry
+    image.purge
+
+    redirect_back(fallback_location: admin_root_path)
+  end
+
+  # action_item :delete_item_image, only: :show do
+  #   link_to "Delete", delete_item_image_admin_item_path(photo), method: :delete if image.present?
+  # end
+
+
   controller do
     def create
       # binding.pry
@@ -57,7 +71,6 @@ ActiveAdmin.register Item do
   # =======
 
   show do
-    # binding.pry
     columns do
       column do
         attributes_table do
@@ -68,14 +81,21 @@ ActiveAdmin.register Item do
           row :price_per_day
 
             item.photos.each_with_index do |photo, i|
-              # binding.pry
-              # image_tag(url_for(photo)) if photo.present?
               row "Photo #{i+1}" do
-                image_tag(url_for(photo)) if photo.present?
+                columns do
+                  column do
+                    image_tag(url_for(photo)) if photo.present?
+                  end
+                  column do
+                    link_to "Delete", delete_item_image_admin_item_path(photo.id), method: :delete
+                  end
+                end
               end
             end
         end
       end
     end
   end
+
+
 end
