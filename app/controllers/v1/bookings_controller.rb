@@ -8,10 +8,8 @@ module V1
     
    
     def create  
-        customer= Customer.new(full_name: params[:customer_name], phone: params[:customer_phone]  ) 
-        customer.save!
-       # customerid = Customer.last.id
-        booking = Booking.new(starts_on: params[:starts_on], ends_on: params[:ends_on], customer_id:  customer.id,  items: Item.find(params[:item_ids]))
+       
+        booking = Booking.new(customer_id: params[:customer_id], starts_on: params[:starts_on], ends_on: params[:ends_on], customer_id:  customer.id,  items: Item.find(params[:item_ids]))
         
         booking.save!
         head 201

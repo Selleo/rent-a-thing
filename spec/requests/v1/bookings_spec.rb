@@ -13,15 +13,23 @@ RSpec.describe '/v1/bookings' do
       item = create(:item)
 
       travel_to(Date.new(2021, 6, 1)) do
-        expect {
+       
+      
+    
+        expect(Booking.count).to eq(0)
+
+          customer = FactoryBot.create(:customer)
+
           post '/v1/bookings', params: {
-            customer_name: 'Tony Halik',
-            customer_phone: '+48509111111',
             starts_on: '2021-10-01',
             ends_on: '2021-10-02',
-            item_ids: [item.id]
+            item_ids: [item.id],
+            customer_id: customer.id
           }
-        }.to change { Booking.count }.by(1)
+          expect(Booking.count).to eq(1)
+          booking = Booking.last
+          expect(booking.customer_id).to customer.id
+
 
         expect(response).to be_created
         booking = Booking.last
