@@ -24,7 +24,7 @@ RSpec.describe '/v1/bookings' do
       end
     end
 
-    it 'returns booking summary in the response' do
+    fit 'returns booking summary in the response' do
       item = create(:item, name: 'Fantom 24X')
 
       travel_to(Date.new(2021, 6, 1)) do
