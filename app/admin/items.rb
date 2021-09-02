@@ -17,35 +17,30 @@ ActiveAdmin.register Item do
 
   permit_params :name, :description, :category_id, :price, :archived, :image
 
+  controller do
+    def create
+      create! do |format|
+        flash[:notice] = 'New item name'
+        format.html { redirect_to admin_items_path }
+      end
+    end
 
-    controller do
-      def create
-        create! do |format|
-          #{ admin_items_url }
-          flash[:notice] = "New item #{ :name }"
-          format.html { redirect_to admin_items_path } 
-    
-        end
-      end 
-      def update
-        update! { admin_items_url } 
-      end 
-    end 
-
-
-
+    def update
+      update! { admin_items_url }
+    end
+  end
 
   index do
     selectable_column
-   
-    #if image.present?
+
+    # if image.present?
     # image_column :image, style: :thumb
     # end
 
-     #column "Image" do |item|
+    # column "Image" do |item|
 
-      #image_tag item.image
-     #image_tag (item.image,width:100,height:80) 
+    # image_tag item.image
+    # image_tag (item.image,width:100,height:80)
     # end
 
     column :id
@@ -56,10 +51,9 @@ ActiveAdmin.register Item do
     column :price
     actions
   end
-  
-  show do
-    panel "Item Details" do
 
+  show do
+    panel 'Item Details' do
       if item.image.present?
         div do
           image_tag item.image
@@ -72,17 +66,13 @@ ActiveAdmin.register Item do
         row :archived
         row :category
         row :price
-        row "Bookings" do |item|
+        row 'Bookings' do |item|
           item.bookings.count
         end
       end
     end
   end
 
-  
-
-
-   
   form do |f|
     inputs do
       input :name
@@ -91,11 +81,11 @@ ActiveAdmin.register Item do
       input :archived
       input :price
     end
-      
-    f.inputs do 
+
+    f.inputs do
       f.input :image, as: :file
-    end  
-      
+    end
+
     actions
   end
 end
