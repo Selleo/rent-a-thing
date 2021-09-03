@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_02_185007) do
+ActiveRecord::Schema.define(version: 2021_09_03_150654) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,6 +79,15 @@ ActiveRecord::Schema.define(version: 2021_09_02_185007) do
     t.index ["item_id"], name: "index_booked_items_on_item_id"
   end
 
+  create_table "booking_exceptions", force: :cascade do |t|
+    t.bigint "item_id", null: false
+    t.date "starts_on", null: false
+    t.date "ends_on", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_booking_exceptions_on_item_id"
+  end
+
   create_table "bookings", force: :cascade do |t|
     t.date "starts_on"
     t.date "ends_on"
@@ -114,13 +123,13 @@ ActiveRecord::Schema.define(version: 2021_09_02_185007) do
   end
 
   create_table "items", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.text "description"
-    t.boolean "archived"
+    t.boolean "archived", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "category_id"
-    t.decimal "price_per_day", default: "0.0", null: false
+    t.decimal "price_per_day", precision: 10, scale: 2, default: "0.0", null: false
     t.index ["category_id"], name: "index_items_on_category_id"
   end
 
@@ -128,6 +137,7 @@ ActiveRecord::Schema.define(version: 2021_09_02_185007) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "booked_items", "bookings"
   add_foreign_key "booked_items", "items"
+  add_foreign_key "booking_exceptions", "items"
   add_foreign_key "bookings", "customers"
   add_foreign_key "item_pictures", "items"
 end

@@ -4,6 +4,7 @@ class Item < ApplicationRecord
   belongs_to :category
 
   has_many :item_pictures, dependent: :destroy
+  has_many :booking_exceptions, dependent: :destroy
 
   validates :name, presence: true, length: { minimum: 4, maximum: 64 }
   validates :price_per_day, presence: true, numericality: true
@@ -11,5 +12,19 @@ class Item < ApplicationRecord
   scope :active, -> { where(archived: false) }
   scope :archived, -> { where(archived: true) }
 
+  scope :not_booked, ->(starts, ends) do
+    def overlaps?(objects, range)
+      objects.map do |object|
+        (object.starts_on..object.ends_on).overlaps?(range)
+      end.none?
+    end
+
+    Item.all.filter_map do |item|
+      range = starts..ends
+      item if overlaps?(item.bookings, range) && overlaps?(item.booking_exceptions, range)
+    end
+  end
+
   accepts_nested_attributes_for :item_pictures, allow_destroy: true
+
 end
