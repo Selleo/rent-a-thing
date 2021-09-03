@@ -1,5 +1,5 @@
 class Booking < ApplicationRecord
-  belongs_to :customer
+  belongs_to :customer, :required => false
   has_many :booked_items, dependent: :destroy
   has_many :items, through: :booked_items
 

@@ -2,7 +2,7 @@ module V1
   class BookedDaysByMonthController < ActionController::API
     def show
       bookings_length_by_month = Booking.
-        where(created_at: Date.current.all_year).
+        where(created_at: Date.current.all_year, by_admin: false).
         group_by{ |booking| booking.created_at.month }.
         transform_values do |bookings|
           bookings.sum do |booking|

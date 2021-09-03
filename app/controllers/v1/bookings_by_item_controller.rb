@@ -1,7 +1,7 @@
 module V1
   class BookingsByItemController < ActionController::API
     def index
-      bookings = Booking.all
+      bookings = Booking.where(by_admin: false)
       booked_items = bookings.flat_map do |booking|
         booking.items
       end
